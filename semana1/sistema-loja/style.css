@@ -10,14 +10,14 @@ header {
 }
 
 #querocafe {
-    margin: 15px 600px;
+    margin: 15px 700px;
     color: white;
     font-weight: 900;
     font-size: 1.5em;
 }
 
 #sistema {
-    margin: 50px 700px;
+    margin: 50px 850px;
     color: white;
 }
 
@@ -37,7 +37,7 @@ body {
 
 #menu a {
     display: inline;
-    margin-right: 100px;
+    margin-right: 120px;
     color: white;
     font-weight: 900;
     font-size: 1.2em;
@@ -59,27 +59,74 @@ body {
 }
 
 #conteudo {
-    margin: 50px 900px 0px 50px;
+    display: inline;
 }
 
 #localizacao {
-    display: inline;
-    margin-right: 100px;
     color: white;
     font-weight: 900;
     font-size: 1.2em;
-    box-sizing: border-box;
-    padding-left: 370px;
-    padding-top: 5000px;
+    padding-top: 50px;
+    padding-left: 1200px;
 }
 
 #redes {
-    display: inline;
-    margin-right: 100px;
     color: white;
     font-weight: 900;
     font-size: 1.2em;
-    box-sizing: border-box;
-    padding-left: 370px;
+    margin: -35px 200px;
+    box-sizing: border-box;    
+}
+
+table {margin: 40px 300px;
+}
+
+
+td {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid black;
+}
+
+#redes table {
+    padding-left: 0px;
+    border: none;
+    margin: 0;
+}
+
+
+#redes td {
+    padding: 0px 0px;
+    border: none;
+}
+
+
+#redes img {
+    margin-right: 25px;
+}
+
+h6 {
+}
+
+form {
+    border: 2px solid black;
+    padding: 50px;
+    margin: 20px 600px;
+}
+
+.linhas-formulario {
+    padding: 15px;
+}
+
+#historia {
+    padding: 40px 200px;
+}
+
+#titulo-funcionarios {
+    padding-left: 900px;
     padding-top: 50px;
+}
+
+#tabela-funcionarios {
+    padding-left: 450px;
 }
