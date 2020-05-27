@@ -57,7 +57,6 @@ div>p:first-child {
     height: 15px;
 }
 
-
 /** 
   *
   *  ESTILOS HOME 
@@ -104,6 +103,22 @@ table {
 
 td button {
     background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+}
+
+td button:hover {
+    background-color: #9c8b3c;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+}
+
+td button:active {
+    background-color: #ffffff;
     width: 150px;
     height: 30px;
     border-radius: 5px;
