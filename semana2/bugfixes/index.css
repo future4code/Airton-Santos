@@ -56,7 +56,7 @@ div>p:first-child {
 
 button {
     outline: none;}
-    
+
 /** 
   *
   *  ESTILOS HOME 
@@ -164,4 +164,16 @@ td {
 .icone {
     height: 15px;
     width: 15px;
+}
+
+.icone:hover {
+    height: 15px;
+    width: 15px;
+    opacity: 0.5;
+}
+
+.icone:active {
+    height: 15px;
+    width: 15px;
+    opacity: 1;
 }
