@@ -5,8 +5,6 @@
   **/
 
 * {
-    margin: 0;
-    padding: 0;
     font-family: 'Roboto', sans-serif;    
 }
 
@@ -80,6 +78,11 @@ div>p:first-child {
 
 #conteudo-div-container {
     padding-top: 150px;
+}
+
+ol {
+    width: 300px;
+    margin: 0 auto;
 }
 
 /**
