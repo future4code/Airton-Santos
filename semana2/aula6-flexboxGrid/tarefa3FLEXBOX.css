@@ -8,29 +8,84 @@ div {
 }
 
 #header {
-  background-color: #01FF70;  
+  background-color: #01FF70;
+  text-align: center;
+  height: 60px;
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #menu {
-    background-color: #FFDC00;    
+    background-color: #FFDC00;
+    text-align: center;
+    height: 60px;
+    flex-basis: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #content1 {
-    background-color: #F012BE;    
+    background-color: #F012BE; 
+    text-align: center;
+    height: 621px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #content2 {
-    background-color: #0074D9;    
+    background-color: #0074D9;  
+    text-align: center;
+    height: 200px;
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #image {
-    background-color: #FF4136;    
+    background-color: #FF4136; 
+    text-align: center;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #extra {
-    background-color: #2ECC40;   
+    background-color: #2ECC40; 
+    text-align: center;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #footer {
     background-color: #B10DC9;
+    height: 60px;
+    text-align: center;
+    flex-direction: column-reverse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cabecalho {
+    display: flex;
+}
+
+#content2-image-extra {
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#image-extra {
+    flex-direction: row-reverse;
+    flex-basis: 25%;
 }
