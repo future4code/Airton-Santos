@@ -7,14 +7,18 @@ div {
     color: #ffffff;
 }
 
+#cabecalho {
+    display: flex;
+}
+
 #header {
-  background-color: #01FF70;
-  text-align: center;
-  height: 60px;
-  flex-basis: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+background-color: #01FF70;
+text-align: center;
+height: 60px;
+flex-basis: 25%;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 #menu {
@@ -28,9 +32,8 @@ div {
 }
 
 #content1 {
-    background-color: #F012BE; 
-    text-align: center;
-    height: 621px;
+    background-color: #F012BE;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,10 +75,6 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#cabecalho {
-    display: flex;
 }
 
 #content2-image-extra {
