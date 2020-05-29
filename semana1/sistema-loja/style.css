@@ -1,0 +1,132 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    background-color: #f0a30a;
+    width: 100%;
+    height: 100%;
+}
+
+#querocafe {
+    margin: 15px 700px;
+    color: white;
+    font-weight: 900;
+    font-size: 1.5em;
+}
+
+#sistema {
+    margin: 50px 850px;
+    color: white;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 20vh 8vh 57vh 15vh;
+}
+
+#menu {
+    background-color: #fa6800;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-left: 370px;
+    padding-top: 22px;
+}
+
+#menu a {
+    display: inline;
+    margin-right: 120px;
+    color: white;
+    font-weight: 900;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+
+
+#main {
+    background-color: #fff2cc;
+}
+
+#footer {
+    background-color: #f0a30a;
+}
+
+#widecoffee {
+    height: 15px;
+}
+
+#conteudo {
+    display: inline;
+}
+
+#localizacao {
+    color: white;
+    font-weight: 900;
+    font-size: 1.2em;
+    padding-top: 50px;
+    padding-left: 1200px;
+}
+
+#redes {
+    color: white;
+    font-weight: 900;
+    font-size: 1.2em;
+    margin: -35px 200px;
+    box-sizing: border-box;    
+}
+
+table {margin: 40px 300px;
+}
+
+
+td {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid black;
+}
+
+#redes table {
+    padding-left: 0px;
+    border: none;
+    margin: 0;
+}
+
+
+#redes td {
+    padding: 0px 0px;
+    border: none;
+}
+
+
+#redes img {
+    margin-right: 25px;
+}
+
+h6 {
+}
+
+form {
+    border: 2px solid black;
+    padding: 50px;
+    margin: 20px 600px;
+}
+
+.linhas-formulario {
+    padding: 15px;
+}
+
+#historia {
+    padding: 40px 200px;
+}
+
+#titulo-funcionarios {
+    padding-left: 900px;
+    padding-top: 50px;
+}
+
+#tabela-funcionarios {
+    padding-left: 450px;
+}
