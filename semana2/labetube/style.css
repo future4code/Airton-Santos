@@ -4,8 +4,13 @@
 }
 
 img {
-    width: 20px;
-    height: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
 }
 
 header {
@@ -18,30 +23,29 @@ header {
 }
 
 #titulo {
-    margin-left: 30px;
+    margin-left: 80px;
     display: flex;
     align-items: center;
+    font-size: 25px;
 }
 
 #busca {
-    margin-right: 30px;
+    margin-right: 80px;
     display: flex;
     align-items: center;
 }
 
-article {
-    width: 100%;
-    display: flex;
+#busca img {
+    width: 35px;
+    height: 35px;
 }
 
 footer {
-    display: flex;
-    flex-direction: column-reverse;
     background-color: blanchedalmond;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 20px;
     width: 100%;
     height: 15vh;
 }
@@ -50,6 +54,86 @@ input {
     outline: none;
     border: none;
     border-bottom: 2px solid black;
-    padding: 2px;
+    padding: 12px 100px;
     margin-right: 2px;
+}
+
+#video1-4 {
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    padding: 5px;
+    margin: 40px 300px;
+}
+
+#video5-8 {
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    padding: 5px;
+    margin: 40px 300px;
+}
+
+.videos {
+    border: 1px solid red;
+    width: 20vh;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+}
+
+.videos img {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+article {
+    height: 67vh;
+}
+
+@media screen and (min-device-width : 0px) and (max-device-width : 600px) {
+    /* celulares */
+
+    #video1-4 {
+        width: 100vh;
+        flex-wrap: wrap;
+    }
+
+    #video5-8 {
+        width: 100vh;
+        flex-wrap: wrap;
+    }
+
+    
+input {
+    padding: 0px 0px;
+}
+
+.videos {
+    border: 1px solid red;
+    width: 50vh;
+}
+
+header {
+    width: 100vh;
+}
+
+footer {
+    width: 100vh;
+}
+
+#busca {
+    margin-right: 2px;
+}
+
+#titulo {
+    margin-left: 2px;
+}
+
+
+.videos img {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
 }
