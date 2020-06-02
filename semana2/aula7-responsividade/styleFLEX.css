@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Kalam', cursive;
+    letter-spacing: 30px;
+    font-size: 35px;
+}
+
+body {
+    width: 100%;
+}
+
+#header {
+    background-color: red;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    background-color: honeydew;
+}
+
+#um {
+    height: 15vh;
+    background-color: blue;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#dois {
+    height: 15vh;
+    background-color: yellow;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#tres {
+    height: 15vh;
+    background-color: green;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#quatro {
+    height: 15vh;
+    background-color: blue;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border: 2px solid black;
+}
+
+#cinco {
+    height: 15vh;
+    background-color: yellow;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#seis {
+    height: 15vh;
+    background-color: green;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#sete {
+    height: 40vh;
+    background-color: black;
+    color: #fff;
+    width: 50%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#oito {
+    height: 40vh;
+    background-color: black;
+    color: #fff;
+    width: 50%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#nove {
+    height: 15vh;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#dez {
+    height: 15vh;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#onze {
+    height: 15vh;
+    width: 33%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#um-dois-tres {
+    display: flex;
+}
+
+#quatro-cinco-seis {
+    display: flex;
+}
+
+#sete-oito {
+    display: flex;
+}
+
+#nove-dez-onze {
+    display: flex;
+}
+
+    @media screen and (min-device-width : 451px) and (max-device-width : 750px) {
+    /* tablets */
+
+    * {
+        letter-spacing: 12px;
+    }
+        
+
+    #um {
+        min-width: 48%;
+        margin: 2px;
+        }
+        
+        #dois {
+        min-width: 48%;
+        margin: 2px;
+        }        
+        
+        #tres {
+        width: 100%;
+        margin: 2px;
+        }
+        
+        #um-dois-tres {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        }
+    
+
+        #quatro {
+        min-width: 48%;
+        margin: 2px;
+        }
+            
+        #cinco {
+        min-width: 48%;
+        margin: 2px;
+        }
+         
+            
+        #seis {
+        width: 100%;
+        margin: 2px;
+        }
+          
+        #quatro-cinco-seis {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        }
+    
+
+        #nove {
+        min-width: 48%;
+        margin: 2px;
+        }
+            
+        #dez {
+        min-width: 48%;
+        margin: 2px;
+        }
+         
+            
+        #onze {
+        width: 100%;
+        margin: 2px;
+        }
+          
+        #nove-dez-onze {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        }
+                
+    
+    }
+
+        @media screen and (max-device-width : 450px) {
+       /* celulares */
+
+    * {
+        letter-spacing: 1px;
+    }
+        
+    #um {
+        width: 100%;
+        }
+        
+        #dois {
+        width: 100%;
+        }        
+        
+        #tres {
+        width: 100%;
+        }
+        
+        #um-dois-tres {
+        flex-wrap: wrap;
+        }
+        
+        #quatro {
+        width: 100%;
+        }
+            
+        #cinco {
+        width: 100%;
+        }        
+            
+        #seis {
+        width: 100%;
+        }
+            
+        #quatro-cinco-seis {
+        flex-wrap: wrap;
+        }
+        
+        #nove {
+        width: 100%;
+        }
+            
+        #dez {
+        width: 100%;
+        }        
+            
+        #onze {
+        width: 100%;
+        }
+            
+        #nove-dez-onze {
+        flex-wrap: wrap;
+        }
+
+        }
