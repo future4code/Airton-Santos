@@ -16,9 +16,9 @@ let respostaCelKel = (' e ') + ('convertidos em Kelvin são ') + (30 + 273.15) +
 console.log(respostaCelFah2+respostaCelKel)*/
 
 //d-
-let valorUsuario = Number.parseInt(prompt ('Insira o valor em Celsius a ser convertido:'))
-let celFah2 = valorUsuario * (9/5) + (32)
-let respostaCelFah2 = (valorUsuario) + (' convertidos em Fahrenheit são ') + (celFah2 + ' C°!')
-let respostaCelKel3 = ('\nE ') + (valorUsuario) + (' convertidos em Kelvin são ')
-let respostaCelKel1 = (273.15) + (valorUsuario)
+let valorUsuario = prompt ('Insira o valor em Celsius a ser convertido:')
+let celFah2 = Number(valorUsuario) * (9/5) + (32)
+let respostaCelFah2 = Number(valorUsuario) + (' convertidos em Fahrenheit são ') + (celFah2 + ' °F!')
+let respostaCelKel3 = ('\nE ') + Number(valorUsuario) + (' convertidos em Kelvin são ')
+let respostaCelKel1 = (273.15) + Number(valorUsuario)
 console.log(respostaCelFah2 + respostaCelKel3 + respostaCelKel1)
