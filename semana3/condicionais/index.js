@@ -71,3 +71,32 @@ else if ((primeiroNumero = segundoNumero) && (primeiroNumero = terceiroNumero) &
 }*/
 
 //EXERCICIO 5
+// Link do fluxograma: https://1drv.ms/u/s!AuykhqsrEr1zprhXnWWEOVD7rgALEQ?e=2AOr74
+
+alert("Para descobrir a classificacao do animal, digite sim ou não para as perguntas a seguir!"
+
+let entrada = prompt("O animal em questao tem ossos?")
+if (entrada == "não") {
+    console.log("O animal em questao é um INVERTEBRADO!")
+} else {
+let entrada2 = prompt("O animal em questao tem pelos?")
+if (entrada2 == "sim") {
+let entrada2 = prompt("Esse animal e racional ou irracional?")
+if (entrada2 == "sim") {
+    console.log("O animal na verdade e um SER HUMANO!")
+} else {
+    console.log("O animal e um MAMIFERO NAO HUMANO!")
+}
+} else {
+let entrada2 = prompt("O animal em questao tem penas?")
+if (entrada2 == "não") {
+let entrada2 = prompt("E um animal terrestre?")
+if (entrada2 == "sim")
+let entrada2 = prompt("O animal passa parte da vida em ambiente aquatico?")
+    console.log(entrada2)
+} else {
+    console.log("O animal em questao e um PEIXE!")
+} else {
+    console.log("O animal em questao e uma AVE!")
+}
+}
