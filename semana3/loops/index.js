@@ -44,10 +44,25 @@ for(numeroDoArray of arrayOriginal) {
 console.log("O menor numero e ", menorNumero, "e o maior numero e ", maiorNumero)*/
 
 //b
-const lista = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
-const novaLista = []
-for(const item of lista) {
-    (item/10)
-    novaLista.push(Number(item))
-    console.log(novaLista)
+/*const arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
+const novoArray = []
+for(let item of arrayOriginal) {
+    novoArray.push(item / 10)
   }
+  console.log(novoArray)*/
+
+//c
+/*const arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
+const novoArray = []
+for(let item of arrayOriginal) {
+    if (item %2 === 0) {
+        novoArray.push(item)
+    }
+  }
+  console.log(novoArray)*/
+
+  //d
+/*const arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
+for(let item in arrayOriginal) {
+    console.log("O elemento do index ", item, " e ", arrayOriginal[item])
+}*/
