@@ -8,9 +8,9 @@
     <title>PLANNER</title>
 </head>
 <body>
-    <div class="enviar-tarefa">
+    <div id="enviar-tarefa">
         <h1>MINHA SEMANA</h1>
-            <input type="text" value="" id="meu-input" onchange="adicionaItem()">
+            <input type="text" value="" id="meu-input">
                 <select id="selecao-dias">
                     <option id="option-segunda" value="segunda">Segunda-Feira</option>
                     <option id="option-terca" value="terca">Terca-Feira</option>
@@ -22,47 +22,47 @@
                 </select>
             <button onclick="adicionaItem()">Adicionar tarefa</button>
     </div>
+    <div id="lista">
     <div>
         <h2>Segunda-Feira</h2>
-        <ul id="dia-segunda">
-
-        </ul>
+        <ul id="dia-segunda"></ul>
     </div>
-    <div id="terca">
+    <div>
         <h2>Terca-Feira</h2>
         <ul id="dia-terca">
 
         </ul>
     </div>
-    <div id="quarta">
+    <div>
         <h2>Quarta-Feira</h2>
         <ul id="dia-quarta">
 
         </ul>
     </div>
-    <div id="quinta">
+    <div>
         <h2>Quinta-Feira</h2>
         <ul id="dia-quinta">
 
         </ul>
     </div>
-    <div id="sexta">
+    <div>
         <h2>Sexta-Feira</h2>
         <ul id="dia-sexta">
 
         </ul>
     </div>
-    <div id="sabado">
+    <div>
         <h2>Sabado</h2>
         <ul id="dia-sabado">
 
         </ul>
     </div>
-    <div id="domingo">
+    <div>
         <h2>Domingo</h2>
         <ul id="dia-domingo">
 
         </ul>
+    </div>
     </div>
 </body>
 </html>

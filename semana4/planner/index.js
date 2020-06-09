@@ -28,11 +28,11 @@ function adicionaItem() {
 
     if (selecaoDias === segundaFeira) {
     let tarefaDia = document.getElementById("dia-segunda")
-    tarefaDia.innerHTML += `<li> ${item} </li>`
+    tarefaDia.innerHTML += `<li>${item}</li>`
     meuInput.value = ""
     } if (selecaoDias === tercaFeira) {
         let tarefaDia = document.getElementById("dia-terca")
-        tarefaDia.innerHTML += `<li> ${item} </li>`
+        tarefaDia.innerHTML += `<li>${item}</li>`
         meuInput.value = ""
         } if (selecaoDias === quartaFeira) {
             let tarefaDia = document.getElementById("dia-quarta")
@@ -54,5 +54,7 @@ function adicionaItem() {
             let tarefaDia = document.getElementById("dia-domingo")
             tarefaDia.innerHTML += `<li> ${item} </li>`
             meuInput.value = ""
+        } if (meuInput === "") {
+            alert(`A tarefa nao pode ser um texto vazio!`)
         }
 }
