@@ -30,31 +30,41 @@ function adicionaItem() {
         alert(`A tarefa nao pode ser um texto vazio!`)
     } if (selecaoDias === segundaFeira) {
     let tarefaDia = document.getElementById("dia-segunda")
-    tarefaDia.innerHTML += `<li>${item}</li>`
+    tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
     meuInput.value = ""
-    } if (selecaoDias === tercaFeira) {
-        let tarefaDia = document.getElementById("dia-terca")
-        tarefaDia.innerHTML += `<li>${item}</li>`
-        meuInput.value = ""
-        } if (selecaoDias === quartaFeira) {
-            let tarefaDia = document.getElementById("dia-quarta")
-            tarefaDia.innerHTML += `<li> ${item} </li>`
+        } if (selecaoDias === tercaFeira) {
+            let tarefaDia = document.getElementById("dia-terca")
+            tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
             meuInput.value = ""
-        } if (selecaoDias === quintaFeira) {
-            let tarefaDia = document.getElementById("dia-quinta")
-            tarefaDia.innerHTML += `<li> ${item} </li>`
-            meuInput.value = ""
-        } if (selecaoDias === sextaFeira) {
-            let tarefaDia = document.getElementById("dia-sexta")
-            tarefaDia.innerHTML += `<li> ${item} </li>`
-            meuInput.value = ""
-        } if (selecaoDias === diaSabado) {
-            let tarefaDia = document.getElementById("dia-sabado")
-            tarefaDia.innerHTML += `<li> ${item} </li>`
-            meuInput.value = ""
-        } if (selecaoDias === diaDomingo) {
-            let tarefaDia = document.getElementById("dia-domingo")
-            tarefaDia.innerHTML += `<li> ${item} </li>`
-            meuInput.value = ""
-        }
-}
+                } if (selecaoDias === quartaFeira) {
+                    let tarefaDia = document.getElementById("dia-quarta")
+                    tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
+                    meuInput.value = ""
+                        } if (selecaoDias === quintaFeira) {
+                            let tarefaDia = document.getElementById("dia-quinta")
+                            tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
+                            meuInput.value = ""
+                                } if (selecaoDias === sextaFeira) {
+                                    let tarefaDia = document.getElementById("dia-sexta")
+                                    tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
+                                    meuInput.value = ""
+                                        } if (selecaoDias === diaSabado) {
+                                            let tarefaDia = document.getElementById("dia-sabado")
+                                            tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
+                                            meuInput.value = ""
+                                            } if (selecaoDias === diaDomingo) {
+                                                let tarefaDia = document.getElementById("dia-domingo")
+                                                tarefaDia.innerHTML += `<li onclick="this.style.textDecoration = 'line-through'">${item}</li>`
+                                                meuInput.value = ""
+                                            }
+                                        }
+
+                                        function apagaTudo() {
+                                            document.getElementsByTagName("ul")[0].innerHTML = ""
+                                            document.getElementsByTagName("ul")[1].innerHTML = ""
+                                            document.getElementsByTagName("ul")[2].innerHTML = ""
+                                            document.getElementsByTagName("ul")[3].innerHTML = ""
+                                            document.getElementsByTagName("ul")[4].innerHTML = ""
+                                            document.getElementsByTagName("ul")[5].innerHTML = ""
+                                            document.getElementsByTagName("ul")[6].innerHTML = ""
+                                        }
