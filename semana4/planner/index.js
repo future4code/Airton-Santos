@@ -26,7 +26,9 @@ function adicionaItem() {
     let domingo = document.getElementById("option-domingo")
     let diaDomingo = domingo.value
 
-    if (selecaoDias === segundaFeira) {
+    if (meuInput.value === "") {
+        alert(`A tarefa nao pode ser um texto vazio!`)
+    } if (selecaoDias === segundaFeira) {
     let tarefaDia = document.getElementById("dia-segunda")
     tarefaDia.innerHTML += `<li>${item}</li>`
     meuInput.value = ""
@@ -54,7 +56,5 @@ function adicionaItem() {
             let tarefaDia = document.getElementById("dia-domingo")
             tarefaDia.innerHTML += `<li> ${item} </li>`
             meuInput.value = ""
-        } if (meuInput === "") {
-            alert(`A tarefa nao pode ser um texto vazio!`)
         }
 }
