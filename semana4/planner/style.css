@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #5783F7;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+   color: #ACF53F;
+}
+
+button {
+    background-color: #70A81B;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 1em;
+    border-radius: 20px;
+}
+
+input {
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 80px 10px 80px;
+
+}
+
+select {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#enviar-tarefa {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: green;
+    background-color: #ACF53F;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+li {
+    list-style: none;
+    padding-top: 10px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+ul {
+    text-align: center;
+}
+
+#lista {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+#limpar-tarefas {
+    background-color: black;
+}
+
+@media screen and (min-device-width : 375px) and (max-device-width : 600px) {
+ body {
+     display: flex;
+     flex-wrap: wrap;
+     text-align: center;
+     width: 375px;
+     height: 667px;
+ }
+ #lista {
+     display: flex;
+     flex-wrap: wrap;
+ }
+}

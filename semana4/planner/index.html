@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>PLANNER</title>
+</head>
+<body>
+    <div id="enviar-tarefa">
+        <h1>MINHA SEMANA</h1>
+            <input type="text" value="" id="meu-input">
+                <select id="selecao-dias">
+                    <option id="option-segunda" value="segunda">Segunda-Feira</option>
+                    <option id="option-terca" value="terca">Terca-Feira</option>
+                    <option id="option-quarta" value="quarta">Quarta-Feira</option>
+                    <option id="option-quinta" value="quinta">Quinta-Feira</option>
+                    <option id="option-sexta" value="sexta">Sexta-Feira</option>
+                    <option id="option-sabado" value="sabado">Sabado</option>
+                    <option id="option-domingo" value="domingo">Domingo</option>
+                </select>
+                <button onclick="adicionaItem()">Adicionar tarefa</button>
+                <button id="limpar-tarefas" onclick="apagaTudo()">Limpar tarefas</button>
+    </div>
+    <div id="lista">
+    <div>
+        <h2>Segunda-Feira</h2>
+        <ul id="dia-segunda"></ul>
+    </div>
+    <div>
+        <h2>Terca-Feira</h2>
+        <ul id="dia-terca">
+
+        </ul>
+    </div>
+    <div>
+        <h2>Quarta-Feira</h2>
+        <ul id="dia-quarta">
+
+        </ul>
+    </div>
+    <div>
+        <h2>Quinta-Feira</h2>
+        <ul id="dia-quinta">
+
+        </ul>
+    </div>
+    <div>
+        <h2>Sexta-Feira</h2>
+        <ul id="dia-sexta">
+
+        </ul>
+    </div>
+    <div>
+        <h2>Sabado</h2>
+        <ul id="dia-sabado">
+
+        </ul>
+    </div>
+    <div>
+        <h2>Domingo</h2>
+        <ul id="dia-domingo">
+
+        </ul>
+    </div>
+    </div>
+</body>
+</html>
