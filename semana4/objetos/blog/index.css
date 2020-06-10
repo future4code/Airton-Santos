@@ -73,15 +73,20 @@ textarea {
 
 .div-post h2 {
     color: #1C33AD;
+    padding: 10px;
 }
 
 .div-post li {
     color: #ffffff;
     font-weight: 900;
+    padding: 10px;
 }
 
 .div-post p {
     padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: #1C33AD;
     background-color: #ffffff;
+    font-weight: 700;
 }
