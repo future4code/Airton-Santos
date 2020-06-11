@@ -23,8 +23,8 @@ function cadastrarDespesa() {
 
 let arrayDespesa = []
 
-function filtraDados() {
-    arrayDespesa.forEach((valor, i, arr) => {
-        
-    })
-}
+const somaValoresArray = arrayDespesa.map((soma, i, arr) => {
+    return soma.valor
+})
+
+console.log(somaValoresArray)
