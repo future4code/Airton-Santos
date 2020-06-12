@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="index.js" defer></script>
+    <title>Controlador de despesas</title>
+</head>
+<body>
+    <header>
+        <h1>CONTROLADOR DE DESPESAS PESSOAIS</h1>
+    </header>
+    <div id="main-container">
+        <div id="controlador">
+            <table>
+                <h2>CONTROLADOR DE DESPESAS:</h2>
+                <h4>Cadastrar despesa</h4>
+                <tr><label for="valor">Valor<input type="number" name="valor" value="" id="valor"></label></tr><br>
+                <tr><label for="tipo">Tipo<select id="tipo" name="tipo">
+                    <option value="casa">Casa</option>
+                    <option value="roles">Roles</option>
+                    <option value="outros">Outros</option>
+                </select></tr><br>
+                <tr><label for="descricao">Descricao<input type="text" name="descricao" value="" id="descricao"></label></tr><br>
+                <button onclick="cadastrarDespesa()">Cadastrar despesa</button><br>
+            </table>
+            <div id="relacao-despesas">
+            </div>
+        </div>
+        <div id="despesas">
+            <table>
+                <h2>DESPESAS DETALHADAS:</h2>
+                <tr><label for="tipo">Tipo<select id="tipo" name="tipo">
+                    <option id="casa" value="CASA">Casa</option>
+                    <option id="roles" value="ROLES">Roles</option>
+                    <option id="outros" value="OUTROS">Outros</option>
+                </select></tr><br>
+                <tr><label for="valor">Valor minimo<input type="number" name="valor" value="" id="valor"></label></tr><br>
+                <tr><label for="valor">Valor maximo<input type="number" name="valor" value="" id="valor"></label></tr><br>
+                <tr><button onclick="filtrar()">Filtrar</button></tr>
+                <tr><button onclick="limparFiltros()">Limpar filtros</button></tr>
+            </table>
+        </div>
+        <div id="extrato">
+            <table>
+                <tr><h2>EXTRATO:</h2></tr><br>
+                <tr><h4>Valor total:</h4></tr><br>
+                <div id="total">
+
+                </div>
+            </table>
+        </>
+    </div>
+    <footer>
+        <h2>Copyright &copy; 2020 Desined by: Airton Lopes</h2>
+    </footer>    
+</body>
+</html>
