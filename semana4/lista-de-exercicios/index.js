@@ -52,24 +52,24 @@
 
 //Exercícios de Lógica de Programação
 //1-
-/*let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 while (num <= 10) {
     console.log(num)
     num++
 }
-console.log(num)*/
+console.log(num)
 
-/*for (let num = 0; num <= 10; num++) {
+for (let num = 0; num <= 10; num++) {
     console.log(num)
-}*/
+}
 
-/*for(let num2 of num) {
+for(let num2 of num) {
     if (num2 <= 10) {
         num2++
         console.log(num2)
     }
-}*/
+}
 
 //2-
 //a)false
@@ -79,15 +79,15 @@ console.log(num)*/
 //e)true
 
 //3-
-/*const quantidadeDeNumerosPares = 3
+const quantidadeDeNumerosPares = 3
 let i = 0
 while(i < quantidadeDeNumerosPares) {
   console.log(i*2)
   i++
-}*/
+}
 
 //4-
-/*function tipoTriangulo(lado1, lado2, lado3) {
+function tipoTriangulo(lado1, lado2, lado3) {
     if ((lado1 === lado2) && (lado2 === lado3)) {
         console.log(`Esse triangulo é Equilátero`)
     } else if ((lado1 === lado2) || (lado2 === lado3) || (lado3 === lado1)) {
@@ -96,10 +96,10 @@ while(i < quantidadeDeNumerosPares) {
         console.log(`Esse triangulo é Escaleno`)
     } 
 }
-tipoTriangulo(1, 2, 3)*/
+tipoTriangulo(1, 2, 3)
 
 //5-
-/*function verificaNumero(numero1, numero2) {
+function verificaNumero(numero1, numero2) {
     if (numero1 > numero2) {
         console.log(`O maior é ${numero1}`)
     } else {
@@ -118,7 +118,54 @@ tipoTriangulo(1, 2, 3)*/
                 console.log(`A diferenca entre eles é ${numero3}`)
             }
 }
-(verificaNumero(15, 30))*/
+(verificaNumero(15, 30))
 
 //Exercícios de Funções
 //1-
+let arrayNumeros = [1, 20, 300, 500, 1234, 8, 89, 50, 55, -20, -15, 999]
+
+function funcaoImprimaMaiorMenor (a) {
+    let numero1 = Infinity;
+    let numero2 = 0;
+    
+    for (let i of a) {
+        if(i < numero1) {
+            numero1 = i
+        }
+        if (i > numero2) {
+            numero2 = i
+        }
+    }
+    a = a.filter((e, i, a) => {
+        return e !== numero1
+    })
+
+    a = a.filter((e, i, a) => {
+        return e !== numero2
+    })
+
+    numero1 = Infinity;
+    numero2 = 0;
+
+    for (let i of a) {
+        if(i < numero1) {
+            numero1 = i
+        }
+        if (i > numero2) {
+            numero2 = i
+        }
+    }
+    
+    return `${numero1} e ${numero2}`
+}
+
+console.log(funcaoImprimaMaiorMenor(arrayNumeros))
+
+//2-
+let hello = () => {
+    alert("Hello Future4");
+}
+hello()
+
+//Exercícios de Objetos
+//
