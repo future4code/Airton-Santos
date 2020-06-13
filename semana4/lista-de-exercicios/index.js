@@ -168,4 +168,204 @@ let hello = () => {
 hello()
 
 //Exercícios de Objetos
-//
+//1-Arrays e obejtos sao conjuntos de informacoes que sao armazenadas dentro de uma variavel.
+//Podemos/Devemos utilizar arrays e objetos, quando precisamos armazenar informacoes variadas
+//dentro de uma variavel, com a diferenca que o objeto, pode-se criar dados mais complexos,
+//como por exemplo: Dados de cadastro de uma pessoa, ou um registro de mercadorias, como se
+//fosse um fichario.
+
+//2-
+function criaRetangulo (lado1, lado2) {
+    return {
+        largura: lado1,
+        altura: lado2,
+        perimetro: 2 * (lado1 + lado2),
+        area: (lado1 * lado2)
+    }
+}
+console.log(criaRetangulo(10, 20))
+//3-
+let filmeFavorito = {
+    titulo: "Clube da luta",
+    ano: 1999,
+    diretor: "David Fincher",
+    Atores: ["Edward Norton", "Brad Pitt"],
+    Atrizes: ["Helena Bonham Carter", "Penelope Cruz"]
+}
+
+console.log(`Venha assistir ao filme ${filmeFavorito.titulo}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.Atores}, ${filmeFavorito.Atrizes}.`)
+
+//4-
+//a-
+let pessoa = {
+    nome: "Airton",
+    idade: 33,
+    email: "airton@labenu.com",
+    endereco: "Rua Soledade, 29"
+}
+
+function anonimizarPessoa(p) {
+    return {
+    nome: "ANÔNIMO",
+    idade: p.idade,
+    email: p.email,
+    endereco: p.endereco
+    }
+}
+
+console.log(anonimizarPessoa(pessoa))
+console.log(pessoa)
+
+//Exercícios de Funções de array
+//1-
+let pessoas = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+]
+//a
+let retornaPessoaAdulto = (a) => {
+    a = a.filter((elm, idx, arr) => {
+        return elm.idade >= 18
+    })
+    return a
+}
+
+//b
+    console.log(retornaPessoaAdulto(pessoas))
+
+    let retornaPessoaCrianca = (a) => {
+    a = a.filter((elm, idx, arr) => {
+        return elm.idade <= 18
+    })
+    return a
+}
+    console.log(retornaPessoaCrianca(pessoas))
+
+//2-
+//a-
+const array = [10, 20, 30, 40, 50, 60, 5, 7, 9, 11, 13]
+
+let entradasMultiplicadosPorDois = (a) => {
+    a = a.map((elm, idx, arr) => {
+        return (elm) * 2
+    })
+    return a
+}
+
+console.log(entradasMultiplicadosPorDois(array))
+
+//b
+let entradasMultiplicadosPorTresString = (a) => {
+    a = a.map((elm, idx, arr) => {
+        return (elm * 3).toString()
+    })
+    return a
+}
+
+console.log(entradasMultiplicadosPorTresString(array))
+
+//c
+let retornaParImpar = (a) => {
+    a = a.map((elm, idx, arr) => {
+        if (elm %2 === 0) {
+            return `${elm} é par`
+        } else {
+            return `${elm} é impar`
+        }
+    })
+    return a
+}
+
+console.log(retornaParImpar(array))
+
+//3-
+const pessoasParque = [
+	{ nome: "Paula", idade: 12, altura: 1.8},
+	{ nome: "João", idade: 20, altura: 1.3},
+	{ nome: "Pedro", idade: 15, altura: 1.9},
+	{ nome: "Luciano", idade: 22, altura: 1.8},
+	{ nome: "Artur", idade: 10, altura: 1.2},
+	{ nome: "Soter", idade: 70, altura: 1.9}
+]
+
+let deixaEntrar = (a) => {
+    a = a.filter((elm, idx, arr) => {
+        return elm.altura >= 1.5
+    })
+    a = a.filter((elm, idx, arr) => {
+        return elm.idade > 14 && elm.idade < 60
+    })
+    return a
+}
+console.log(deixaEntrar(pessoasParque))
+
+let naoDeixaEntrar = (a) => {
+    a = a.filter((elm, idx, arr) => {
+        return !deixaEntrar(a).includes(elm)
+    })
+    return a
+}
+console.log(naoDeixaEntrar(pessoasParque))
+
+//4
+const consultas = [
+	{ nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+	{ nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+	{ nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+	{ nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+
+let emailsClientes = (a) => {
+    let homens = a.filter((elm, idx, arr) => {
+        return elm.genero === "masculino"
+    })
+
+    let mulheres = a.filter((elm, idx, arr) => {
+        return elm.genero === "feminino"
+    })
+    
+    let arrayEmails = []
+
+    homens.forEach((elm, idx, arr) => {
+        if (elm.cancelada) {
+            arrayEmails.push(`Olá, Sr. ${elm.nome}. Infelizmente, sua consulta marcada para o dia ${elm.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`)
+        } else {
+            arrayEmails.push(`Olá, Sr. ${elm.nome}. Estamos enviando esta mensagem para lembrá-lo da sua consulta no dia ${elm.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`)
+        }
+    })
+        mulheres.forEach((elm, idx, arr) => {
+            if (elm.cancelada) {
+                arrayEmails.push(`Olá, Sra. ${elm.nome}. Infelizmente, sua consulta marcada para o dia ${elm.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`)
+            } else {
+                arrayEmails.push(`Olá, Sra. ${elm.nome}. Estamos enviando esta mensagem para lembrá-la da sua consulta no dia ${elm.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`)
+            }
+    })
+    return arrayEmails
+}
+console.log(emailsClientes(consultas))
+
+//5
+const contas = [
+	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
+
+let atualizaContas = (a) => {
+    let saldoTotal = 0
+    a.forEach((elm, idx, arr) => {
+        for (let i of elm.compras) {
+            saldoTotal += i
+        }
+        elm.saldoTotal = elm.saldoTotal - saldoTotal
+        
+        saldoTotal = 0
+    })
+    return a
+}
+console.log(atualizaContas(contas))
