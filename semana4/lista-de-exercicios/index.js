@@ -231,11 +231,9 @@ let retornaPessoaAdulto = (a) => {
     })
     return a
 }
-
-//b
     console.log(retornaPessoaAdulto(pessoas))
-
-    let retornaPessoaCrianca = (a) => {
+//b
+let retornaPessoaCrianca = (a) => {
     a = a.filter((elm, idx, arr) => {
         return elm.idade <= 18
     })
