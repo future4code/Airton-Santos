@@ -3,19 +3,19 @@ import './SecaoComentario.css'
 
 export class SecaoComentario extends Component {
 	state = {
-
+		inputTexto: ""
 	}
 
-	onChangeComentario() {
-
-	}
+	onChangeComentario = (event) => {
+		this.setState({ inputTexto: event.target.value });
+	  };
 
 	render() {
 		return <div className={'comment-container'}>
 			<input
 				className={'input-comentario'}
 				placeholder={'Comentário'}
-				value={''}
+				value={this.state.inputTexto}
 				onChange={this.onChangeComentario}
 			/>
 			<button onClick={this.props.aoEnviar}>Enviar</button>
