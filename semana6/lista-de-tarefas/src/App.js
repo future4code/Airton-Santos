@@ -26,12 +26,15 @@ class App extends React.Component {
     }
 
   componentDidUpdate() {
-
+    const salvarTarefa = JSON.stringify(this.state.tarefas)
+    localStorage.setItem("itemLista", salvarTarefa)
   };
 
   componentDidMount() {
-
-  };
+    const objetoEmString = localStorage.getItem("itemLista")
+    const passaParaObjeto = JSON.parse(objetoEmString)
+    this.setState({tarefas: passaParaObjeto})
+    };
 
   onChangeInput = (event) => {
     this.setState({inputValue: event.target.value})
