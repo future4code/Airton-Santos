@@ -52,19 +52,31 @@ class CreateUserPage extends React.Component {
         email: ""
     }
 
-    createUser = () => {
+    //FEITO COM ASYNC/AWAIT
+    createUser = async () => {
+      try {
         const body = {
-            name: this.state.name,
-            email: this.state.email
-        }
-        axios.post(baseUrl, body, axiosConfig).then(() => {
+        name: this.state.name,
+        email: this.state.email
+    }
+          await axios.post(baseUrl, body, axiosConfig)
           alert(`Usuario criado com sucesso!`)
           this.setState({name: "", email: ""})
-        }).catch(error => {
+      } catch (err) {
           alert(`O usuario nao foi criado, verifique os dados e tente novamente!`)
-        })
+      }
+      
+        // const body = {
+        //     name: this.state.name,
+        //     email: this.state.email
+        // }
+        // axios.post(baseUrl, body, axiosConfig).then(() => {
+        //   alert(`Usuario criado com sucesso!`)
+        //   this.setState({name: "", email: ""})
+        // }).catch(error => {
+        //   alert(`O usuario nao foi criado, verifique os dados e tente novamente!`)
+        // })
     }
-
 
     onChangeName = event => {
         this.setState({name: event.target.value})

@@ -81,6 +81,7 @@ class  ListUsersPage extends React.Component {
         try {
             await axios.delete(`${baseUrl}${userId}`, axiosConfig)
             this.getAllUsers()
+            alert(`Usuario deletado com sucesso!`)
         } catch (err) {
             console.log(err.message)
         }
