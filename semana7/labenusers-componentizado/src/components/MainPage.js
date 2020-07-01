@@ -20,9 +20,6 @@ flex-direction: column;
 padding-top: 20vh;
 `
 const DivPrincipal = styled.div `
-background-color: #0036AB;
-min-width: 40vw;
-max-width: 40vw;
 margin: 100px auto;
 display: flex;
 flex-direction: column;
@@ -46,7 +43,7 @@ min-width: 15vw;
 max-width: 20vw;
 max-height: 5vh;
 color: #fff;
-background-color: #0036AB;
+background-color: #E9381C;
 border: none;
 outline: none;
 cursor: pointer;
