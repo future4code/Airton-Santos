@@ -5,13 +5,15 @@ import styled from 'styled-components'
 const NomeUsuario = styled.li `
 display: flex;
 justify-content: space-between;
-border-bottom: 2px solid black;
+border: 2px solid #636e72;
 width: 30vw;
+border-radius: 8px;
+margin-top: 6px;
 `
 const DivCadastro = styled.div `
 border-radius: 8px;
-width: 20vw;
-height: 35vh;
+min-width: 20vw;
+min-height: 35vh;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -24,6 +26,8 @@ const DivGrande = styled.div `
 display: flex;
 align-items: flex-start;
 flex-direction: column;
+background-color: #b2bec3;
+height: 100vh;
 `
 
 const H2 = styled.h2 `
@@ -88,16 +92,22 @@ const H3 = styled.h3 `
 margin-left: 20px;
 `
 const DivListaCadastros = styled.div `
-border: 2px solid black;
-border-radius: 8px;
 margin-left: 8px;
-width: 35vw;
+min-width: 35vw;
+max-width: 35vw;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+`
+const DivPaginaLista = styled.div `
+background-color: #b2bec3;
+height: 100vh;
 `
 
 class App extends React.Component {
 
   state = {
-    renderiza: false,
+    renderiza: true,
     nameValue: "",
     emailValue: "",
     usuarios: []
@@ -197,8 +207,7 @@ onChangeEmailValue = (event) => {
         </DivCadastro>
     </DivGrande>)
     
-    const telaDois = (<div>
-         <div>
+    const telaDois = (<DivPaginaLista>
            <BotaoMudaRenderiza onClick={this.mudaEstadoRenderiza}>Ir para pagina de registro</BotaoMudaRenderiza>
             <DivListaCadastros>
           <H3>Usuarios cadastrados:</H3>
@@ -210,8 +219,7 @@ onChangeEmailValue = (event) => {
             })}
           </ul>
           </DivListaCadastros>
-        </div>
-    </div>)
+        </DivPaginaLista>)
 
           return (
             <>
