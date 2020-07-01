@@ -5,8 +5,9 @@ import styled from 'styled-components'
 const NomeUsuario = styled.li `
 display: flex;
 justify-content: space-between;
-border: 2px solid #636e72;
-width: 30vw;
+background-color: #fff;
+max-width: 80vw;
+min-width: 50vw;
 border-radius: 8px;
 margin-top: 6px;
 `
@@ -18,15 +19,17 @@ display: flex;
 flex-direction: column;
 align-items: center;
 align-self: center;
-background-color: #74b9ff;
+background-color: #636e72;
 margin-top: 30px;
 justify-content: space-around;
+border-bottom: 5px solid #222f3e;
+border-left: 3px solid #222f3e;
 `
 const DivGrande = styled.div `
 display: flex;
 align-items: flex-start;
 flex-direction: column;
-background-color: #b2bec3;
+background-color: #0984e3;
 height: 100vh;
 `
 
@@ -34,7 +37,7 @@ const H2 = styled.h2 `
 color: #fff;
 `
 const BotaoCriaUser = styled.button `
-background-color: #ff7675;
+background-color: #20bf6b;
 border: none;
 height: 36px;
 border-radius: 8px;
@@ -57,8 +60,8 @@ outline: none;
 `
 
 const BotaoMudaRenderiza = styled.button `
-height: 50px;
-background-color: #ff7675;
+height: 35px;
+background-color: #fc5c65;
 border: none;
 border-radius: 8px;
 margin: 8px;
@@ -100,8 +103,8 @@ flex-direction: column;
 justify-content: space-between;
 `
 const DivPaginaLista = styled.div `
-background-color: #b2bec3;
-height: 100vh;
+background-color: #0984e3;
+min-height: 100vh;
 `
 
 class App extends React.Component {
