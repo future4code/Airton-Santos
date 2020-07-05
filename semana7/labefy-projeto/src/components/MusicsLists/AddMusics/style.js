@@ -49,7 +49,15 @@ export const AddMusicsButton = styled.button `
     background-color: #499EC9;
     font-weight: 700;
     font-size: 1em;
+        &:hover
+        {
+        color: #499EC9;
+        background-color: #ffffff;
+        transition: 500ms;
+        box-shadow: 0 0 2em #499EC9;
+        }
 `
+
 export const RenderFormAddMusicButton = styled.button `
     border-radius: 20px;
     padding: 8px;
@@ -61,6 +69,13 @@ export const RenderFormAddMusicButton = styled.button `
     background-color: #ffffff;
     font-weight: 700;
     font-size: 1em;
+        &:hover
+        {
+        color: #ffffff;
+        background-color: #499EC9;
+        transition: 500ms;
+        box-shadow: 0 0 1em #ffffff;
+        }
 `
 export const FormAddMusicContainer = styled.div `
     display: flex;

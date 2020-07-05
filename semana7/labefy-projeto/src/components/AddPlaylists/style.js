@@ -36,4 +36,11 @@ export const AddPlaylistButton = styled.button `
     background-color: #499EC9;
     font-weight: 700;
     font-size: 1em;
+        &:hover
+        {
+        color: #499EC9;
+        background-color: #ffffff;
+        transition: 500ms;
+        box-shadow: 0 0 2em #499EC9;
+        }
 `
