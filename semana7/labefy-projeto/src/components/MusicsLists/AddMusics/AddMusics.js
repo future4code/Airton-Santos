@@ -32,7 +32,7 @@ class AddMusics extends React.Component {
           type="text"
           placeholder="Adicione a url da musica"
           />
-          <AddMusicsButton>Adicionar Musica</AddMusicsButton>
+          <AddMusicsButton>Adicionar musica</AddMusicsButton>
         </FormAddMusicContainer>}
     </AddMusicsContainer>
   );

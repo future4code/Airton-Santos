@@ -6,7 +6,7 @@ export const MusicsListContainer = styled.div`
     flex-direction: column;
     align-items: center;
     min-width: 40vw;
-    min-height: 30vh;
+    min-height: 70vh;
     margin: 50px;
     box-shadow: 0 0 8em #499EC9;
     > h1
