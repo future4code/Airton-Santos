@@ -6,8 +6,8 @@ export const DivPrincipal = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #282828;
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
     > h1 {
       background-color: #121212;
       color: #ffffff;

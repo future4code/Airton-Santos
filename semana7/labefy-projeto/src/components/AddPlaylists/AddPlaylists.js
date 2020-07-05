@@ -35,7 +35,6 @@ class AddPlaylists extends React.Component {
   name: this.state.name
   }
   axios.post(baseUrl, body, axiosConfig).then(() => {
-  alert(`Playlist criada com sucesso!`)
   this.setState({name: ""})
   this.getAllPlaylists()
   }).catch(error => {
@@ -70,7 +69,7 @@ class AddPlaylists extends React.Component {
         <div>
             {this.state.allPlaylists.length === 0 && <SpinnerLoading></SpinnerLoading>}
             {this.state.allPlaylists.map(playlists=> {
-                return <PlaylistName key={playlists.id}>{playlists.name}<DeletePlaylistButton onClick={() => this.deletePlaylist(playlists.id)}>X</DeletePlaylistButton></PlaylistName>
+                return <PlaylistName onClick={() => this.props.onClickShowMusicsList(playlists.id)} key={playlists.id}>{playlists.name}<DeletePlaylistButton onClick={() => this.deletePlaylist(playlists.id)}>X</DeletePlaylistButton></PlaylistName>
             })}
         </div>
     </AddPlaylistContainer>

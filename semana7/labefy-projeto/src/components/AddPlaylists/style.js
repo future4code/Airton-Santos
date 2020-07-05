@@ -5,7 +5,7 @@ export const AddPlaylistContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 40vw;
+    max-width: 40vw;
     min-height: 70vh;
     margin: 50px;
     box-shadow: 0 0 8em #499EC9;
@@ -73,7 +73,6 @@ export const SpinnerLoading = styled.div`
 export const PlaylistName = styled.div `
 width: 30vw;
 padding: 16px;
-
 border-radius: 20px;
 outline: none;
 border: none;
