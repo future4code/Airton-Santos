@@ -40,7 +40,7 @@ useEffect(() => {
             )
           })}
       </MainMatchesCard>
-      <ClearMatchesButton onClick={onClickClearMatches}>Limpar Matches</ClearMatchesButton>
+      <ClearMatchesButton onClick={onClickClearMatches}>Clear Matches</ClearMatchesButton>
     </div>
   );
 }

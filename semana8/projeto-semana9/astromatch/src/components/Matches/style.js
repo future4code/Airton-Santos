@@ -28,14 +28,25 @@ export const MainMatchesCard = styled.div`
 export const ClearMatchesButton = styled.button`
     position: relative;
     top: 10px;
-    left: 130px;
+    left: 150px;
     margin-bottom: 20px;
     color: #fff;
     background-color: #762D93;
     border: none;
     cursor: pointer;
     outline: none;
-    padding: 6px;
+    padding: 8px;
     border-radius: 8px;
     font-weight: 600;
+    &:hover {
+      background-color: #ffffff;
+      box-shadow: 0 0 1em #762D93;
+      color: #762D93;
+      transition: 250ms;
+    }
+    &:active {
+      background-color: #762D93;
+      transition: 250ms;
+      color: #ffffff;
+    }
 `
