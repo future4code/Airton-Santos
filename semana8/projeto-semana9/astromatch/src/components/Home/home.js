@@ -54,8 +54,8 @@ useEffect(() => {
         </Description>
       </InfoPeople> : <Loader>Por enquanto nao temos mais perfis para mostrar</Loader>}
       <LikeUnlikeButtons>
-        {profile ? <ButtonLike onClick={onClickLike}>😍</ButtonLike> : <ButtonLike>😍</ButtonLike>}
-        {profile ? <ButtonUnlike onClick={onClickUnlike}>😓</ButtonUnlike> : <ButtonUnlike>😓</ButtonUnlike>}
+        {profile ? <ButtonLike onClick={onClickLike}>Like</ButtonLike> : <ButtonLike>Like</ButtonLike>}
+        {profile ? <ButtonUnlike onClick={onClickUnlike}>Dislike</ButtonUnlike> : <ButtonUnlike>Dislike</ButtonUnlike>}
       </LikeUnlikeButtons>
     </ProfileCard>
   );

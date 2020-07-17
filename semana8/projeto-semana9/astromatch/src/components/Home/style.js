@@ -43,15 +43,17 @@ export const Bio = styled.h2`
 `
 export const ButtonLike = styled.button `
     position: relative;
+    font-weight: 700;
+    font-size: 1.2em;
     bottom: -10px;
-    left: 250px;
+    left: 245px;
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: green;
+    background-color: #27ae60;
     color: #ffffff;
     border-radius: 10px;
-    width: 60px;
+    width: 80px;
     height: 30px;
     &:hover {
       background-color: #ffffff;
@@ -60,22 +62,23 @@ export const ButtonLike = styled.button `
       transition: 250ms;
     }
     &:active {
-      background-color: green;
-      color: #ffffff;
+      background-color: #2ecc71;
       transition: 250ms;
+      color: #ffffff;
     }
 `
 export const ButtonUnlike = styled.button `
     position: relative;
+    font-weight: 700;
+    font-size: 1.2em;
     bottom: -10px;
-    left: 50px;
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: red;
+    background-color: #c0392b;
     color: #ffffff;
     border-radius: 10px;
-    width: 60px;
+    width: 80px;
     height: 30px;
     &:hover {
       background-color: #ffffff;
@@ -84,9 +87,9 @@ export const ButtonUnlike = styled.button `
       transition: 50ms;
     }
     &:active {
-      background-color: red;
-      color: #ffffff;
+      background-color: #e74c3c;
       transition: 50ms;
+      color: #ffffff;
     }
 `
 export const Loader = styled.p `
