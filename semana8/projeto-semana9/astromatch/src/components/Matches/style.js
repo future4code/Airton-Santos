@@ -22,7 +22,7 @@ export const Bio = styled.h4`
 `
 export const MainMatchesCard = styled.div`
     width: 400px;
-    height: 500px;
+    height: 453px;
     overflow: auto;
 `
 export const ClearMatchesButton = styled.button`

@@ -29,16 +29,18 @@ useEffect(() => {
 }, []);
 
   return (
-    <MainMatchesCard>
-      {matchesList.map(match => {
-        return (
-        <MatchesCard>
-        <ProfilePhoto src={match.photo} />
-        <Bio>{match.name}, {match.age} anos</Bio>
-        </MatchesCard>
-        )
-      })}
+    <div>
+      <MainMatchesCard>
+          {matchesList.map(match => {
+            return (
+            <MatchesCard>
+            <ProfilePhoto src={match.photo} />
+            <Bio>{match.name}, {match.age} anos</Bio>
+            </MatchesCard>
+            )
+          })}
+      </MainMatchesCard>
       <ClearMatchesButton onClick={onClickClearMatches}>Limpar Matches</ClearMatchesButton>
-    </MainMatchesCard>
+    </div>
   );
 }
