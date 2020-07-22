@@ -15,7 +15,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>LabeX</h1>
+      <h1>Home Page LabeX</h1>
       <button onClick={goToLoginPage}>Pagina de login</button>
       <button onClick={goToApplicationFormPage}>Inscrever-se</button>
     </div>
