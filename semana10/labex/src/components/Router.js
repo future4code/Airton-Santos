@@ -6,10 +6,13 @@ import CreateTripPage from './CreateTripPage'
 import ListTripsPage from './ListTripsPage'
 import LoginPage from './LoginPage'
 import TripDetailsPage from './TripDetailsPage'
+import Header from './Header';
+import Footer from './Footer';
 
 export default function Router() {
   return (
     <BrowserRouter>
+    <Header />
       <Switch>
         <Route exact path="/login">
           <LoginPage />
@@ -33,6 +36,7 @@ export default function Router() {
           <div>Opa! 404!</div>
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

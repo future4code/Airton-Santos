@@ -22,6 +22,7 @@ export default function LoginPage() {
       history.push("/trips/list")
     }).catch(err => {
       alert("NAO BOMBOU!")
+      window.location.reload()
     })
   }
 

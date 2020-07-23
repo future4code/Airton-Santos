@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { baseUrl } from "./constants";
 import Axios from "axios";
-import CardTrip from './CardTrip'
 
 export default function ListTripsPage() {
   const history = useHistory();
@@ -59,13 +58,14 @@ export default function ListTripsPage() {
       <button onClick={handleLogout}>Sair</button>
       <div>
         {tripsList.map((trip) => {
-                    return <CardTrip 
-                    planet = {trip.planet}
-                    name = {trip.name}
-                    date = {trip.date}
-                    durationInDays = {trip.durationInDays}
-                    description = {trip.description}
-                    />
+                    return <div key={trip.id}> 
+                    <p>{trip.planet}</p>
+                    <p>{trip.name}</p>
+                    <p>{trip.date}</p>
+                    <p>{trip.durationInDays}</p>
+                    <p>{trip.description}</p>
+                    {/* <button {trip.id}>detalhes da viagem</button> */}
+                    </div>
                 })}
       </div>
     </div>
