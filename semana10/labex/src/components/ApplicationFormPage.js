@@ -20,13 +20,7 @@ export default function ApplicationFormPage() {
   });
 
   useEffect(() => {
-    const token = window.localStorage.getItem("token")
-
-    if (token === null) {
-      history.push("/login")
-    } else {
       getTrips()
-    }
   }, [history])
 
   const getTrips = () => {
@@ -53,13 +47,8 @@ export default function ApplicationFormPage() {
       profession: form.country,
       country: form.country
     }
-    const axiosConfig = {
-      headers: {
-        auth: token
-      }  
-    }
 
-    Axios.post(`${baseUrl}/trips/${form.tripChosen}/apply`, body, axiosConfig)
+    Axios.post(`${baseUrl}/trips/${form.tripChosen}/apply`, body)
     .then(() => {
       alert(`Cadastro realizado com sucesso!`)
       history.push("/")

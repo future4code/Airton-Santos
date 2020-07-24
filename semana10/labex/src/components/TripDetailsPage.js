@@ -5,6 +5,11 @@ import Axios from "axios";
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
 
+const MainContainer = styled.div`
+  height: 80vh;
+  overflow: auto;
+`
+
 export default function TripDetailsPage() {
   const history = useHistory();
   const params = useParams();
@@ -77,15 +82,15 @@ export default function TripDetailsPage() {
   }
 
   return (
-    <div>
+    <MainContainer>
         <div>
         {tripDetailList.candidates && tripDetailList.candidates.map((detail) => {
                     return <div key={detail.id}> 
-                                <p>{detail.name}</p>
+                                <h2>{detail.name}</h2>
+                                <p>Pais: {detail.country}</p>
+                                <p>Profissao: {detail.profession}</p>
+                                <p>Idade: {detail.age}</p>
                                 <p>{detail.applicationText}</p>
-                                <p>{detail.country}</p>
-                                <p>{detail.profession}</p>
-                                <p>{detail.age}</p>
                                 <button onClick={() => handleAproveCandidate(detail.id)}>Aprovar</button>
                                 <button onClick={() => handleRefuseCandidate(detail.id)}>Recusar</button>
                             </div>
@@ -93,7 +98,7 @@ export default function TripDetailsPage() {
 
         </div>
         <div>
-            <h1>Aprovados para esta viagem:</h1>
+            <h1>Candidatos aprovados para esta viagem:</h1>
             {tripDetailList.approved && tripDetailList.approved.map((detail) => {
                     return <div key={detail.id}>
                                 <p>{detail.name}</p>
@@ -104,6 +109,6 @@ export default function TripDetailsPage() {
                             </div>
                 })}
         </div>
-    </div>
+    </MainContainer>
   );
 }

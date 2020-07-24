@@ -3,6 +3,11 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
+const MainContainer = styled.div`
+  height: 80vh;
+  overflow: auto;
+`
+
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
 
 export default function ListTripsPage() {
@@ -41,28 +46,22 @@ export default function ListTripsPage() {
     history.push("/trips/create");
   };
 
-  const handleLogout = () => {
-    window.localStorage.clear();
-    history.push("/");
-  };
-
   return (
-    <div>
+    <MainContainer>
       <h1>Lista de Viagens</h1>
       <button onClick={goToCreateTripPage}>Criar viagem</button>
-      <button onClick={handleLogout}>Sair</button>
       <div>
         {tripsList.map((trip) => {
-                    return <div key={trip.id}> 
-                    <p>{trip.planet}</p>
-                    <p>{trip.name}</p>
-                    <p>{trip.date}</p>
-                    <p>{trip.durationInDays}</p>
+                    return <div key={trip.id}>
+                    <h2>{trip.name}</h2>
                     <p>{trip.description}</p>
+                    <p>Planeta: {trip.planet}</p>
+                    <p>Data de embarque: {trip.date}</p>
+                    <p>Duracao da viagem: {trip.durationInDays} Dias</p>
                     <button onClick={() => goToTripDetailsPage(trip.id)}>Detalhes da viagem</button>
                     </div>
                 })}
       </div>
-    </div>
+    </MainContainer>
   );
 }

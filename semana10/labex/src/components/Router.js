@@ -8,35 +8,42 @@ import LoginPage from './LoginPage'
 import TripDetailsPage from './TripDetailsPage'
 import Header from './Header';
 import Footer from './Footer';
+import styled from 'styled-components'
+
+const Body = styled.div`
+  box-sizing: border-box;
+`
 
 export default function Router() {
   return (
-    <BrowserRouter>
-    <Header />
-      <Switch>
-        <Route exact path="/login">
-          <LoginPage />
-        </Route>
-        <Route exact path="/application-form">
-          <ApplicationFormPage />
-        </Route>
-        <Route exact path="/trips/list">
-          <ListTripsPage />
-        </Route>
-        <Route exact path="/trips/create">
-          <CreateTripPage />
-        </Route>
-        <Route exact path="/trips/details/:tripId">
-          <TripDetailsPage />
-        </Route>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/">
-          <div>Opa! 404!</div>
-        </Route>
-      </Switch>
-      <Footer />
-    </BrowserRouter>
+    <Body>
+      <BrowserRouter>
+      <Header />
+        <Switch>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact path="/application-form">
+            <ApplicationFormPage />
+          </Route>
+          <Route exact path="/trips/list">
+            <ListTripsPage />
+          </Route>
+          <Route exact path="/trips/create">
+            <CreateTripPage />
+          </Route>
+          <Route exact path="/trips/details/:tripId">
+            <TripDetailsPage />
+          </Route>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/">
+            <div>Opa! 404!</div>
+          </Route>
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </Body>
   );
 }

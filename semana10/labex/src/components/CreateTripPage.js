@@ -2,10 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import useForm from '../hooks/useForm'
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
-
-
 
 export default function CreateTripPage() {
   const history = useHistory();
@@ -15,7 +13,15 @@ export default function CreateTripPage() {
     date: "",
     description: "",
     durationInDays: ""
-  });
+  });  
+  
+  useEffect(() => {
+    const token = window.localStorage.getItem("token")
+
+    if (token === null) {
+      history.push("/login")
+    }
+  }, [history])
 
   const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
 
@@ -90,7 +96,6 @@ export default function CreateTripPage() {
           name="date"
           placeholder="Escolha a data de partida da Terra"
           min={today}
-          max="2099-12-31"
           value={form.date}
           onChange={handleInputChange}
           required
