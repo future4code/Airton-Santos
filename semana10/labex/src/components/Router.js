@@ -26,7 +26,7 @@ export default function Router() {
         <Route exact path="/trips/create">
           <CreateTripPage />
         </Route>
-        <Route exact path="/trips/details">
+        <Route exact path="/trips/details/:tripId">
           <TripDetailsPage />
         </Route>
         <Route exact path="/">

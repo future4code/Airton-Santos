@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from 'axios'
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { baseUrl } from './constants';
-import useInput from '../hooks/useInput'
+import useForm from '../hooks/useForm'
+
+const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
 
 export default function LoginPage() {
-  const [email, setEmail] = useInput("");
-  const [password, setPassword] = useInput("");
   const history = useHistory();
+  const { form, onChange } = useForm({
+    email: "",
+    password: ""
+  });
 
-  const handleLogin = () => {
+  const handleLogIn = (e) => {
+    e.preventDefault()
+    const token = window.localStorage.getItem("token")
     const body = {
-      email: email,
-      password: password
+      email: form.email,
+      password: form.password
     }
 
     axios.post(`${baseUrl}/login`, body)
@@ -25,18 +30,36 @@ export default function LoginPage() {
       window.location.reload()
     })
   }
+  
+  const handleInputChange = event => {
+    const { name, value } = event.target;
 
-  const goToHomePage = () => {
-    history.push("/");
+    onChange(name, value);
   };
 
   return (
     <div>
-      <h1 onClick={goToHomePage}>LabeX</h1>
-      <h1>Pagina de Login</h1>
-      <input type="email" value={email} onChange={setEmail} />
-      <input type="password"  value={password} onChange={setPassword} />
-      <button onClick={handleLogin}>Fazer login</button>
+      <form onSubmit={handleLogIn}>
+        <label>E-mail</label>
+        <input
+          name="email"
+          placeholder="Digite seu E-mail"
+          type="email"
+          value={form.email}
+          onChange={handleInputChange}
+          required
+        />
+        <label>Senha</label>
+        <input
+          name="password"
+          placeholder="Digite sua senha"
+          type="password"
+          value={form.password}
+          onChange={handleInputChange}
+          required
+        />
+        <button>Login</button>
+      </form>
     </div>
   );
 }

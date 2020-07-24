@@ -12,4 +12,4 @@ const useInput = estadoInicial => {
   return [valor, lidaAtualizaValor];
 };
 
-export default useInput;
+export default useInput

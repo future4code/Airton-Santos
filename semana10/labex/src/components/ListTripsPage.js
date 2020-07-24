@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { baseUrl } from "./constants";
 import Axios from "axios";
+
+const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
 
 export default function ListTripsPage() {
   const history = useHistory();
@@ -32,12 +33,8 @@ export default function ListTripsPage() {
     })
   }
 
-  const goToHomePage = () => {
-    history.push("/");
-  };
-
-  const goToTripDetailsPage = () => {
-    history.push("/trips/details");
+  const goToTripDetailsPage = (tripId) => {
+    history.push(`/trips/details/${tripId}`);
   };
 
   const goToCreateTripPage = () => {
@@ -51,9 +48,7 @@ export default function ListTripsPage() {
 
   return (
     <div>
-      <h1 onClick={goToHomePage}>LabeX</h1>
       <h1>Lista de Viagens</h1>
-      <button onClick={goToTripDetailsPage}>Detalhes da viagem</button>
       <button onClick={goToCreateTripPage}>Criar viagem</button>
       <button onClick={handleLogout}>Sair</button>
       <div>
@@ -64,7 +59,7 @@ export default function ListTripsPage() {
                     <p>{trip.date}</p>
                     <p>{trip.durationInDays}</p>
                     <p>{trip.description}</p>
-                    {/* <button {trip.id}>detalhes da viagem</button> */}
+                    <button onClick={() => goToTripDetailsPage(trip.id)}>Detalhes da viagem</button>
                     </div>
                 })}
       </div>

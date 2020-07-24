@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
   return (
     <>
-      <p>oi eu sou um footer</p>
+      <h3>Copyright© - Designed by: Airton Lopes - 2020</h3>
     </>
   );
 }
