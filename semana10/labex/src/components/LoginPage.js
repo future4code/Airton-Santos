@@ -4,6 +4,61 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import useForm from '../hooks/useForm'
 
+const MainContainer = styled.div`
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const SubscriptionForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 20rem;
+  height: 20rem;
+  margin-bottom: 8px;
+  background-color: #ecf0f3;
+  box-shadow: 0px 0px 10px #ffffff;
+  opacity: 0.92;
+  padding-top: 32px;
+`
+const Imput = styled.input`
+  width: 250px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+  border-radius: 25px;
+  margin: 64px;
+  padding: 10px 5px 10px 20px;
+  box-shadow: inset 5px 5px 5px #cbced1,
+              inset -5px -5px 5px #ffffff;
+              :hover {
+                background: #FFFFFF;
+                    }
+`
+const Label = styled.label`
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: -48px 64px;
+`
+const LoginButton = styled.button`
+  cursor: pointer;
+  width: 96px;
+  height: 36px;
+  background-color: #45aaf2;
+  border-radius: 0px 12px 0px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  outline: none;
+`
+
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
 
 export default function LoginPage() {
@@ -38,10 +93,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogIn}>
-        <label>E-mail</label>
-        <input
+    <MainContainer>
+      <SubscriptionForm onSubmit={handleLogIn}>
+        <Label>E-mail</Label>
+        <Imput
           name="email"
           placeholder="Digite seu E-mail"
           type="email"
@@ -49,8 +104,8 @@ export default function LoginPage() {
           onChange={handleInputChange}
           required
         />
-        <label>Senha</label>
-        <input
+        <Label>Senha</Label>
+        <Imput
           name="password"
           placeholder="Digite sua senha"
           type="password"
@@ -58,8 +113,8 @@ export default function LoginPage() {
           onChange={handleInputChange}
           required
         />
-        <button>Login</button>
-      </form>
-    </div>
+        <LoginButton>Login</LoginButton>
+      </SubscriptionForm>
+    </MainContainer>
   );
 }

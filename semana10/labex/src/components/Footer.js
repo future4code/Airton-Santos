@@ -7,12 +7,13 @@ const FooterDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0em -3em 2em #45aaf2;
 `
 
 export default function Footer() {
   return (
     <FooterDiv>
-      <h3>Copyright© - Designed by: Airton Lopes - 2020</h3>
+      <h4>Copyright© - Designed by: Airton Lopes - 2020</h4>
     </FooterDiv>
   );
 }
