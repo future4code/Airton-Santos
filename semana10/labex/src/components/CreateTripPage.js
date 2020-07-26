@@ -174,7 +174,7 @@ export default function CreateTripPage() {
           type="text"
           name="description"
           placeholder="Descrição da viagem"
-          pattern={"^.{30,}"}
+          pattern={"^.{50,}"}
           value={form.description}
           onChange={handleInputChange}
           required

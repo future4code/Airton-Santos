@@ -123,10 +123,10 @@ export default function TripDetailsPage() {
     })
   }
 
-  const handleAproveCandidate = (candidateId) => {
+  const handleChooseCandidate = (candidateId, option) => {
     const token = window.localStorage.getItem("token")
     const body = {
-        approve: true
+        approve: option
     }
     const axiosConfig = {
       headers: {
@@ -136,32 +136,15 @@ export default function TripDetailsPage() {
 
     Axios.put(`${baseUrl}/trips/${params.tripId}/candidates/${candidateId}/decide`, body, axiosConfig)
     .then(() => {
-      alert(`Candidato aprovado com sucesso!`)
+      if (option === true) {
+        alert(`Candidato aprovado com sucesso!`)
+      } else {
+        alert(`Candidato reprovado com sucesso!`)
+      }
       history.push("/")
     })
     .catch((err) => {
-      alert(`Voce nao pode aprovar o candidato, verifique os campos e tente novamente!`)
-    })
-  }
-
-  const handleRefuseCandidate = (candidateId) => {
-    const token = window.localStorage.getItem("token")
-    const body = {
-        approve: false
-    }
-    const axiosConfig = {
-      headers: {
-        auth: token
-      }  
-    }
-
-    Axios.put(`${baseUrl}/trips/${params.tripId}/candidates/${candidateId}/decide`, body, axiosConfig)
-    .then(() => {
-      alert(`Candidato reprovado com sucesso!`)
-      history.push("/")
-    })
-    .catch((err) => {
-      alert(`Voce nao pode reprovar o candidato, verifique os campos e tente novamente!`)
+      console.log(err.message)
     })
   }
 
@@ -177,8 +160,8 @@ export default function TripDetailsPage() {
                                  <p>Idade: {detail.age}</p>
                                  <p>{detail.applicationText}</p>
                                  <ButtonsContainer>
-                                  <ApproveButton onClick={() => handleAproveCandidate(detail.id)}>Aprovar</ApproveButton>
-                                  <RefuseButton onClick={() => handleRefuseCandidate(detail.id)}>Recusar</RefuseButton>
+                                  <ApproveButton onClick={() => handleChooseCandidate(detail.id, true)}>Aprovar</ApproveButton>
+                                  <RefuseButton onClick={() => handleChooseCandidate(detail.id, false)}>Recusar</RefuseButton>
                                  </ButtonsContainer>
                                </Candidates>
                   })}
