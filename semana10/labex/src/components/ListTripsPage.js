@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
 const MainContainer = styled.div`
-  height: 80vh;
+  height: 75vh;
   padding-left: 320px;
   padding-right: 320px;
   display: flex;

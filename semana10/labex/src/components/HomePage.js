@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import Planet1 from '../images/planets/planeta1.jpg'
 import Planet2 from '../images/planets/planeta2.jpg'
 import Planet3 from '../images/planets/planeta3.jpg'
 import Planet4 from '../images/planets/planeta4.jpg'
-import Planet5 from '../images/planets/planeta5.jpg'
-import Planet6 from '../images/planets/planeta6.jpg'
 
 const MainContainer = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +17,7 @@ const MainContainer = styled.div`
 const Img = styled.img`
   width: 12rem;
   height: 8rem;
-  margin: 1rem 1rem 1rem 1rem;
+  margin: 1rem 0.5rem 1rem 0.5rem;
   box-shadow: 1em 1em 1em black;
 `
 const TripsImageContainer = styled.div`
@@ -70,8 +68,6 @@ export default function HomePage() {
         <Img src={Planet2} />
         <Img src={Planet3} />
         <Img src={Planet4} />
-        <Img src={Planet5} />
-        <Img src={Planet6} />
       </TripsImageContainer>
       <SubscriptionButton onClick={goToApplicationFormPage}>Inscreva-se agora!</SubscriptionButton>
     </MainContainer>

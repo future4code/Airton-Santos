@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const Logo = styled.div`
 `
 
 const HeaderDiv = styled.div`
-  height: 10vh;
+  height: 15vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -80,7 +80,6 @@ const HandleLogoutButton = styled.button`
 
 export default function Header() {
   const history = useHistory();
-  const token = window.localStorage.getItem("token")
   
   const handleLogout = () => {
     window.localStorage.clear();

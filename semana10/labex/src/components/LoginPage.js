@@ -6,7 +6,7 @@ import useForm from '../hooks/useForm'
 
 const MainContainer = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +70,6 @@ export default function LoginPage() {
 
   const handleLogIn = (e) => {
     e.preventDefault()
-    const token = window.localStorage.getItem("token")
     const body = {
       email: form.email,
       password: form.password

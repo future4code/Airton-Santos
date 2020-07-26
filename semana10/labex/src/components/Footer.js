@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const FooterDiv = styled.div`
-  height: 5vh;
+  height: 8vh;
   width: 100vw;
   display: flex;
   justify-content: center;

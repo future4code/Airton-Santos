@@ -7,7 +7,7 @@ import Axios from "axios";
 
 const MainContainer = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,16 +18,16 @@ const SubscriptionForm = styled.form`
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  width: 25rem;
-  height: 35rem;
+  width: 25vw;
+  height: 50vh;
   background-color: #ecf0f3;
   box-shadow: 0px 0px 10px #ffffff;
   opacity: 0.92;
 `
 const Imput = styled.input`
-  width: 300px;
-  height: 36px;
-  margin-bottom: 8px;
+  width: 16vw;
+  height: 3vh;
+  margin-bottom: 1vh;
   border: none;
   outline: none;
   background: none;
@@ -41,9 +41,9 @@ const Imput = styled.input`
                     }
 `
 const ImputApplicationText = styled.input`
-  width: 300px;
-  height: 72px;
-  margin-bottom: 8px;
+  width: 16vw;
+  height: 3vh;
+  margin-bottom: 1vh;
   border: none;
   outline: none;
   background: none;
@@ -57,9 +57,9 @@ const ImputApplicationText = styled.input`
                     }
 `
 const Select = styled.select`
-  width: 300px;
-  height: 36px;
-  margin-bottom: 8px;
+  width: 16vw;
+  height: 3vh;
+  margin-bottom: 1vh;
   border: none;
   outline: none;
   background: none;
@@ -73,7 +73,7 @@ const Select = styled.select`
                     }
 `
 const Label = styled.label`
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
 `
 const SendSubscription = styled.button`
@@ -88,8 +88,6 @@ const SendSubscription = styled.button`
   font-size: 1.3em;
   font-weight: 700;
   outline: none;
-  position: relative;
-  bottom: -15px;
 `
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
@@ -155,7 +153,7 @@ export default function ApplicationFormPage() {
             onChange={handleInputChange}
             required
             >
-              <option value="">Escolha uma viagem</option>
+              <option value="defaultValue">Escolha uma viagem</option>
               {tripsList.map((trip) => {
                 return <option value={trip.id} key={trip.id}>{trip.name} - {trip.planet}</option>
               })}
@@ -205,7 +203,7 @@ export default function ApplicationFormPage() {
             onChange={handleInputChange}
             required
             >
-              <option value="" disable selected>Escolha um país</option>
+              <option value="defaultValue">Escolha um país</option>
               <Countries />
             </Select>
           <SendSubscription>Enviar</SendSubscription>

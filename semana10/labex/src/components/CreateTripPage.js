@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import useForm from '../hooks/useForm'
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Axios from "axios";
 
 const MainContainer = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@ const SubscriptionForm = styled.form`
   align-items: center;
   border-radius: 20px;
   width: 25rem;
-  height: 30rem;
+  height: 25rem;
   background-color: #ecf0f3;
   box-shadow: 0px 0px 10px #ffffff;
   opacity: 0.92;
@@ -72,8 +72,6 @@ const SendCreateTrip = styled.button`
   font-size: 1.3em;
   font-weight: 700;
   outline: none;
-  position: relative;
-  bottom: -30px;
 `
 
 export default function CreateTripPage() {

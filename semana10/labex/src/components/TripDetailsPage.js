@@ -7,7 +7,7 @@ const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton
 
 const MainContainer = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
 `
