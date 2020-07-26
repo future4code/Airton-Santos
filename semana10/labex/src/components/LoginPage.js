@@ -80,7 +80,6 @@ export default function LoginPage() {
     .then(response => {
       window.localStorage.setItem("token", response.data.token)
       history.push("/trips/list")
-      window.location.reload()
     }).catch(err => {
       alert("Email ou senha não cadastrados")
     })

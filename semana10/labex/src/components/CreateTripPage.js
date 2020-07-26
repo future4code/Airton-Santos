@@ -5,6 +5,77 @@ import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
+const MainContainer = styled.div`
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const SubscriptionForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 25rem;
+  height: 30rem;
+  background-color: #ecf0f3;
+  box-shadow: 0px 0px 10px #ffffff;
+  opacity: 0.92;
+`
+const Imput = styled.input`
+  width: 300px;
+  height: 36px;
+  margin-bottom: 8px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+  border-radius: 25px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: inset 5px 5px 5px #cbced1,
+              inset -5px -5px 5px #ffffff;
+              :hover {
+                background: #FFFFFF;
+                    }
+`
+const Select = styled.select`
+  width: 300px;
+  height: 36px;
+  margin-bottom: 8px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+  border-radius: 25px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: inset 5px 5px 5px #cbced1,
+              inset -5px -5px 5px #ffffff;
+              :hover {
+                background: #FFFFFF;
+                    }
+`
+const Label = styled.label`
+  font-size: 1.2em;
+  font-weight: 600;
+`
+const SendCreateTrip = styled.button`
+  cursor: pointer;
+  width: 150px;
+  height: 36px;
+  background-color: #05c46b;
+  border-radius: 0px 12px 0px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  bottom: -30px;
+`
+
 export default function CreateTripPage() {
   const history = useHistory();
     const { form, onChange } = useForm({
@@ -50,8 +121,7 @@ export default function CreateTripPage() {
       history.push("/trips/list")
     })
     .catch((err) => {
-      alert(`Viagem nao criada, verifique os campos e tente novamente!`)
-      window.location.reload()
+      console.log(err.message)
     })
   }
 
@@ -62,9 +132,10 @@ export default function CreateTripPage() {
   };
 
   return (
-      <form onSubmit={handleCreateTrip}>
-        <label>Nome da viagem</label>
-        <input
+    <MainContainer>
+      <SubscriptionForm onSubmit={handleCreateTrip}>
+        <Label>Nome da viagem</Label>
+        <Imput
           name="name"
           placeholder="Digite o nome da viagem"
           pattern={"^.{5,}"}
@@ -73,8 +144,8 @@ export default function CreateTripPage() {
           onChange={handleInputChange}
           required
         />
-        <label>Selecione o planeta de destino</label>
-        <select
+        <Label>Selecione o planeta de destino</Label>
+        <Select
         name="planet"
         value={form.planet}
         onChange={handleInputChange}
@@ -89,9 +160,9 @@ export default function CreateTripPage() {
           <option value="Urano">Urano</option>
           <option value="Netuno">Netuno</option>
           <option value="Plutão">Plutão</option>
-        </select>
-        <label>Data</label>
-        <input
+        </Select>
+        <Label>Data</Label>
+        <Imput
           type="date"
           name="date"
           placeholder="Escolha a data de partida da Terra"
@@ -100,18 +171,18 @@ export default function CreateTripPage() {
           onChange={handleInputChange}
           required
         />
-        <label>Descrição</label>
-        <input
+        <Label>Descrição</Label>
+        <Imput
           type="text"
           name="description"
           placeholder="Descrição da viagem"
-          pattern={"[A-Za-z]{30,}"}
+          pattern={"^.{30,}"}
           value={form.description}
           onChange={handleInputChange}
           required
         />
-        <label>Duração em dias</label>
-        <input
+        <Label>Duração em dias</Label>
+        <Imput
           name="durationInDays"
           placeholder="Digite a duaração da viagem"
           type="number"
@@ -120,7 +191,8 @@ export default function CreateTripPage() {
           onChange={handleInputChange}
           required
         />
-        <button>Criar viagem</button>
-    </form>
+        <SendCreateTrip>Criar viagem</SendCreateTrip>
+      </SubscriptionForm>
+    </MainContainer>
   );
 }

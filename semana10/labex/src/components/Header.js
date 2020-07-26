@@ -14,10 +14,10 @@ const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  left: 45vw;
   border-bottom: 4px solid #2d98da;
   border-right: 4px solid #2d98da;
+  position: relative;
+  right: -9vw;
 `
 
 const HeaderDiv = styled.div`
@@ -27,6 +27,7 @@ const HeaderDiv = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0em 3em 2em #2d98da;
+  flex-wrap: wrap;
 `
 const GoToLoginPageButton = styled.button`
   cursor: pointer;
@@ -40,8 +41,9 @@ const GoToLoginPageButton = styled.button`
   font-size: 1.3em;
   font-weight: 700;
   position: relative;
-  left: 400px;
+  left: 20vw;
   outline: none;
+  margin: 0 10px;
 `
 const GoToListTripsPageButton = styled.button`
   cursor: pointer;
@@ -55,14 +57,15 @@ const GoToListTripsPageButton = styled.button`
   font-size: 1.3em;
   font-weight: 700;
   position: relative;
-  left: 400px;
+  left: 20vw;
   outline: none;
+  margin: 0 10px;
 `
 const HandleLogoutButton = styled.button`
   cursor: pointer;
   width: 96px;
   height: 36px;
-  background-color: #45aaf2;
+  background-color: #eb3b5a;
   border-radius: 0px 12px 0px 12px;
   display: flex;
   justify-content: center;
@@ -70,8 +73,8 @@ const HandleLogoutButton = styled.button`
   font-size: 1.3em;
   font-weight: 700;
   position: relative;
-  left: 400px;
-  margin: 0 20px;
+  left: 20vw;
+  margin: 0 10px;
   outline: none;
 `
 
@@ -81,8 +84,7 @@ export default function Header() {
   
   const handleLogout = () => {
     window.localStorage.clear();
-    history.push("/login");
-    window.location.reload()
+    history.push("/");
   };
 
   const goToHomePage = () => {
@@ -97,19 +99,12 @@ export default function Header() {
     history.push("/trips/list");
   };
 
-  const renderLoginLogout = () => {
-      if (token === null) {
-      return (<GoToLoginPageButton onClick={goToLoginPage}>Admin</GoToLoginPageButton>)
-    } else {
-      return (<><GoToListTripsPageButton onClick={goToListTripsPage}>Viagens</GoToListTripsPageButton>
-        <HandleLogoutButton onClick={handleLogout}>Logout</HandleLogoutButton></>)
-    }
-  }
-
   return (
     <HeaderDiv>
       <Logo onClick={goToHomePage}>LabeX</Logo>
-      {renderLoginLogout()}
+      <GoToListTripsPageButton onClick={goToListTripsPage}>Viagens</GoToListTripsPageButton>
+      <GoToLoginPageButton onClick={goToLoginPage}>Admin</GoToLoginPageButton>
+      <HandleLogoutButton onClick={handleLogout}>Logout</HandleLogoutButton>
     </HeaderDiv>
   );
 }

@@ -13,81 +13,83 @@ const MainContainer = styled.div`
   align-items: center;
 `
 const SubscriptionForm = styled.form`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-border-radius: 20px;
-width: 30rem;
-height: 40rem;
-margin-bottom: 8px;
-background-color: #ecf0f3;
-box-shadow: 0px 0px 10px #ffffff;
-opacity: 0.92;
-padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 25rem;
+  height: 35rem;
+  background-color: #ecf0f3;
+  box-shadow: 0px 0px 10px #ffffff;
+  opacity: 0.92;
 `
 const Imput = styled.input`
-width: 250px;
-border: none;
-outline: none;
-background: none;
-color: #555;
-border-radius: 25px;
-margin: 64px;
-padding: 10px 5px 10px 20px;
-box-shadow: inset 5px 5px 5px #cbced1,
-            inset -5px -5px 5px #ffffff;
-            :hover {
-              background: #FFFFFF;
-                  }
+  width: 300px;
+  height: 36px;
+  margin-bottom: 8px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+  border-radius: 25px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: inset 5px 5px 5px #cbced1,
+              inset -5px -5px 5px #ffffff;
+              :hover {
+                background: #FFFFFF;
+                    }
 `
-const Textarea = styled.textarea`
-width: 250px;
-border: none;
-outline: none;
-background: none;
-color: #555;
-border-radius: 25px;
-margin: 64px;
-padding: 10px 5px 10px 20px;
-box-shadow: inset 5px 5px 5px #cbced1,
-            inset -5px -5px 5px #ffffff;
-            :hover {
-              background: #FFFFFF;
-                  }
+const ImputApplicationText = styled.input`
+  width: 300px;
+  height: 72px;
+  margin-bottom: 8px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+  border-radius: 25px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: inset 5px 5px 5px #cbced1,
+              inset -5px -5px 5px #ffffff;
+              :hover {
+                background: #FFFFFF;
+                    }
 `
 const Select = styled.select`
-width: 250px;
-border: none;
-outline: none;
-background: none;
-color: #555;
-border-radius: 25px;
-margin: 64px;
-padding: 10px 5px 10px 20px;
-box-shadow: inset 5px 5px 5px #cbced1,
-            inset -5px -5px 5px #ffffff;
-            :hover {
-              background: #FFFFFF;
-                  }
+  width: 300px;
+  height: 36px;
+  margin-bottom: 8px;
+  border: none;
+  outline: none;
+  background: none;
+  color: #555;
+  border-radius: 25px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: inset 5px 5px 5px #cbced1,
+              inset -5px -5px 5px #ffffff;
+              :hover {
+                background: #FFFFFF;
+                    }
 `
 const Label = styled.label`
-font-size: 1.2em;
-font-weight: 600;
-margin: -48px 64px;
+  font-size: 1.2em;
+  font-weight: 600;
 `
 const SendSubscription = styled.button`
-cursor: pointer;
-width: 96px;
-height: 36px;
-background-color: #45aaf2;
-border-radius: 0px 12px 0px 12px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 1.3em;
-font-weight: 700;
-outline: none;
+  cursor: pointer;
+  width: 96px;
+  height: 36px;
+  background-color: #45aaf2;
+  border-radius: 0px 12px 0px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  bottom: -15px;
 `
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/airton-turing"
@@ -122,7 +124,7 @@ export default function ApplicationFormPage() {
       name: form.name,
       age: form.age,
       applicationText: form.applicationText,
-      profession: form.country,
+      profession: form.profession,
       country: form.country
     }
 
@@ -145,7 +147,7 @@ export default function ApplicationFormPage() {
   return (
     <MainContainer>
         <SubscriptionForm onSubmit={handleApplyToTrip}>
-          <Label>Viagem</Label>
+          <Label>Escolha a viagem!</Label>
             <Select        
             name="tripChosen"
             placeholder="Escolha uma viagem"
@@ -155,7 +157,7 @@ export default function ApplicationFormPage() {
             >
               <option value="">Escolha uma viagem</option>
               {tripsList.map((trip) => {
-                return <option value={trip.id} key={trip.id}>{trip.name}</option>
+                return <option value={trip.id} key={trip.id}>{trip.name} - {trip.planet}</option>
               })}
             </Select>
           <Label>Nome</Label>
@@ -179,9 +181,10 @@ export default function ApplicationFormPage() {
             required
           />
           <Label>Porque sou um bom candidato(a)?</Label>
-          <Textarea
+          <ImputApplicationText
             name="applicationText"
-            placeholder="Escreva os motivos pelos quais devemos lhe escolher..."
+            placeholder="Porque devemos te escolher?"
+            pattern={"^.{30,}"}
             value={form.applicationText}
             onChange={handleInputChange}
             required
