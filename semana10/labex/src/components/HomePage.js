@@ -51,6 +51,7 @@ const MainTitle = styled.h1`
   text-shadow: 0 0 8px black;
   margin-bottom: 10vh;
   width: 50vw;
+  text-align: center;
 `
 
 export default function HomePage() {
