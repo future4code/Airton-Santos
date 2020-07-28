@@ -31,6 +31,20 @@ describe("Ao digitar no campo novo post e clicar em adicionar, e esperado que ap
 
         expect(getByText(/post test/)).toBeInTheDocument()
     })
+
+    test("O input e limpo apos o usuario clicar em Adicionar", () => {
+        const {getByPlaceholderText, getByText} = render(<App />)
+
+        const input = getByPlaceholderText("Novo post")
+
+        fireEvent.change(input, { target: { value: "post test" }})
+
+        const button = getByText(/Adicionar/)
+
+        fireEvent.click(button)
+
+        expect(getByPlaceholderText("Novo post")).toBeInTheDocument()
+    })
 })
 
 describe("Ao clicar no botao curtir, o botao deve mudar para descurtir", () => {
@@ -54,7 +68,7 @@ describe("Ao clicar no botao curtir, o botao deve mudar para descurtir", () => {
 })
 
 describe("Ao clicar no botao Apagar, deve aparecer a mensagem: Nao ha posts", () => {
-    test("Botao Apagar e clicado", () => {
+    test("Botao Apagar e clicado e a mensagem Nenhum post aparece na tela", () => {
         const {getByPlaceholderText, getByText} = render(<App />)
 
         const input = getByPlaceholderText("Novo post")
@@ -66,7 +80,31 @@ describe("Ao clicar no botao Apagar, deve aparecer a mensagem: Nao ha posts", ()
         const deleteButton = getByText(/apag/i)
         fireEvent.click(deleteButton)
 
-        expect(getByText(/Nao ha posts/i)).toBeInTheDocument()
+        expect(getByText(/Nenhum post/i)).toBeInTheDocument()
+    })
+    
+    test("Quando o usuario adicionar um post a mensagem 'Quantidade de posts: 1' deve aparecer", () => {
+        const {getByPlaceholderText, getByText} = render(<App />)
+
+        const input = getByPlaceholderText("Novo post")
+        const addButton = getByText(/Adicionar/)
+
+        fireEvent.change(input, { target: { value: "post test" }})
+        fireEvent.click(addButton)
+
+        expect(getByText("Quantidade de posts: 1")).toBeInTheDocument()
+    })
+    
+    test("Quando o usuario tenta adicionar um post vazio a mensagem 'O post nao pode ser vazio' deve aparecer", () => {
+        const {getByPlaceholderText, getByText} = render(<App />)
+
+        const input = getByPlaceholderText("Novo post")
+        const addButton = getByText(/Adicionar/)
+
+        fireEvent.change(input, { target: { value: "" }})
+        fireEvent.click(addButton)
+
+        expect(getByText("O post nao pode ser vazio")).toBeInTheDocument()
     })
 
 })

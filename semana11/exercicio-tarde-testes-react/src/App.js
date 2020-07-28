@@ -5,6 +5,7 @@ import { Post } from "./components/Post";
 const App = () => {
   const [postsList, setPostsList] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [errMessage, setErrMessage] = useState("");
 
   const onChangeInput = event => {
     setInputValue(event.target.value);
@@ -12,15 +13,24 @@ const App = () => {
 
   const addPost = () => {
     // Adiciona um post à lista
-    const newPost = {
-      id: Date.now(),
-      text: inputValue,
-      liked: false
-    };
+    if (inputValue !== "") {
 
-    const newPostsList = [newPost, ...postsList];
+      const newPost = {
+        id: Date.now(),
+        text: inputValue,
+        liked: false
+      };
+  
+      const newPostsList = [newPost, ...postsList];
+  
+      setPostsList(newPostsList);
+      setInputValue("")
+      setErrMessage("")
+    } else {
+      setErrMessage("O post nao pode ser vazio")
+      // setTimeout(() => setErrMessage(""), 3000)
+    }
 
-    setPostsList(newPostsList);
   };
 
   const deletePost = postId => {
@@ -61,16 +71,22 @@ const App = () => {
         <button onClick={addPost}>Adicionar</button>
       </div>
       <br />
-      {postsList.length === 0 ? <p>Nao ha posts</p> : postsList.map(post => {
-        return (
-          <Post
-            key={post.id}
-            post={post}
-            toggleLike={toggleLike}
-            deletePost={deletePost}
-          />
-        );
-      })}
+      {postsList.length === 0 ? <></> : <p>Quantidade de posts: {postsList.length}</p>}
+      {errMessage === "" ? <></> : errMessage}
+      {postsList.length === 0 ? <p>Nenhum post</p> :
+        <div>
+            {postsList.map(post => {
+            return (
+                <Post
+                  key={post.id}
+                  post={post}
+                  toggleLike={toggleLike}
+                  deletePost={deletePost}
+                />
+            );
+          })
+        }
+      </div>}
     </div>
   );
 };
