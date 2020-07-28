@@ -28,7 +28,6 @@ const App = () => {
       setErrMessage("")
     } else {
       setErrMessage("O post nao pode ser vazio")
-      // setTimeout(() => setErrMessage(""), 3000)
     }
 
   };
