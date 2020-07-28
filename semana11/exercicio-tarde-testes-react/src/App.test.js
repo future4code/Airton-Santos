@@ -38,16 +38,35 @@ describe("Ao clicar no botao curtir, o botao deve mudar para descurtir", () => {
         const {getByPlaceholderText, getByText} = render(<App />)
 
         const input = getByPlaceholderText("Novo post")
-        const Addbutton = getByText(/Adicionar/)
+        const addButton = getByText(/Adicionar/)
 
         fireEvent.change(input, { target: { value: "post test" }})
-        fireEvent.click(Addbutton)
-                
-        const Likebutton = getByText(/Curtir/i)
+        fireEvent.click(addButton)
 
-        fireEvent.click(Likebutton)
+        const likeButton = getByText(/Curtir/i)
+
+        fireEvent.click(likeButton)
 
         expect(getByText(/post test/)).toBeInTheDocument()
         expect(getByText(/Descurtir/i)).toBeInTheDocument()
     })
+
+})
+
+describe("Ao clicar no botao Apagar, deve aparecer a mensagem: Nao ha posts", () => {
+    test("Botao Apagar e clicado", () => {
+        const {getByPlaceholderText, getByText} = render(<App />)
+
+        const input = getByPlaceholderText("Novo post")
+        const addButton = getByText(/Adicionar/)
+
+        fireEvent.change(input, { target: { value: "post test" }})
+        fireEvent.click(addButton)
+
+        const deleteButton = getByText(/apag/i)
+        fireEvent.click(deleteButton)
+
+        expect(getByText(/Nao ha posts/i)).toBeInTheDocument()
+    })
+
 })

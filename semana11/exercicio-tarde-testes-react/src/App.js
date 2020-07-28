@@ -61,7 +61,7 @@ const App = () => {
         <button onClick={addPost}>Adicionar</button>
       </div>
       <br />
-      {postsList.map(post => {
+      {postsList.length === 0 ? <p>Nao ha posts</p> : postsList.map(post => {
         return (
           <Post
             key={post.id}
