@@ -48,10 +48,35 @@ const WeekDayTitle = styled.h1`
 const Input = styled.input`
   width: 260px;
   margin: 8px;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 5px;
 `
 const Select = styled.select`
   width: 138px;
   margin: 8px;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 5px;
+`
+const DeleteButton = styled.button`
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  background-color: red;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+`
+const AddButton = styled.button`
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  background-color: #673AB7;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+  padding: 5px;
 `
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-turing-airton/"
@@ -169,50 +194,50 @@ function App() {
             <option value="Sábado">Sábado</option>
             <option value="Domingo">Domingo</option>
           </Select>
-          <button>Adicionar tarefa</button>
+          <AddButton>Adicionar tarefa</AddButton>
         </form>
       </FormContainer>
       <PlannerDaysContainer>
         <DayOfWeekColumn>
           <WeekDayTitle>Segunda-Feira</WeekDayTitle>
                 {monday.map(task => {
-                  return <TaskLine key={task.id}><span>{task.text}</span><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+                  return <TaskLine key={task.id}><span>{task.text}</span><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
                 })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Terça-Feira</WeekDayTitle>
           {tuesday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Quarta-Feira</WeekDayTitle>
           {wednesday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Quinta-Feira</WeekDayTitle>
           {thursday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Sexta-Feira</WeekDayTitle>
           {friday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Sábado</WeekDayTitle>
           {saturday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Domingo</WeekDayTitle>
           {sunday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
       </PlannerDaysContainer>
