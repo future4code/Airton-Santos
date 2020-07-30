@@ -30,11 +30,12 @@ const TaskLine = styled.div`
   justify-content: center;
 `
 const DayOfWeekColumn = styled.div`
-  border: 1px solid red;
   min-width: 10vw;
   min-height: 70vh;
   text-align: center;
   margin: 4px;
+  box-shadow: 0em 0em 5em -1em red;
+  border-radius: 1em;
 `
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-turing-airton/"
