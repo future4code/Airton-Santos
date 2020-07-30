@@ -11,13 +11,13 @@ const Header = styled.h1`
   align-items: center;
   justify-content: center;
   height: 5vh;
-  color: red;
+  color: #673AB7;
 `
 const FormContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
+  height: 12vh;
 `
 const PlannerDaysContainer = styled.div`
   display: flex;
@@ -27,22 +27,38 @@ const PlannerDaysContainer = styled.div`
 const TaskLine = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 0px 16px 16px 16px;
 `
 const DayOfWeekColumn = styled.div`
-  min-width: 10vw;
-  min-height: 70vh;
+  width: 450px;
+  height: 300px;
   text-align: center;
-  margin: 4px;
-  box-shadow: 0em 0em 5em -1em red;
+  margin: 8px;
+  box-shadow: 0em 0em 6em -1em #673AB7;
   border-radius: 1em;
+  overflow: auto;
+`
+const WeekDayTitle = styled.h1`
+  color: gray;
+  font-size: 1.5rem;
+  border-bottom: 3px solid gray;
+  padding-bottom: 3px;
+`
+const Input = styled.input`
+  width: 260px;
+  margin: 8px;
+`
+const Select = styled.select`
+  width: 138px;
+  margin: 8px;
 `
 
 const baseUrl = "https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-turing-airton/"
 
 function App() {
   const [tasksList, setTasksList] = useState([])
-  const { form, onChange } = useForm({
+  const { form, onChange, resetForm } = useForm({
     text: "",
     day: ""
   });
@@ -64,6 +80,7 @@ function App() {
     .then(() => {
       // alert(`Tarefa agendada com sucesso!`)
       getTasks()
+      resetForm()
     })
     .catch((err) => {
       console.log(err.message)
@@ -128,7 +145,7 @@ function App() {
       <FormContainer>
         <form onSubmit={handleApply}>
           <label>Tarefa: </label>
-          <input
+          <Input
           type="text"
           placeholder="tarefa"
           name="text"
@@ -136,9 +153,9 @@ function App() {
           onChange={handleInputChange}
           required
           >
-          </input>
+          </Input>
           <label>Escolha o dia da semana: </label>
-          <select
+          <Select
             name="day"
             value={form.day}
             onChange={handleInputChange}
@@ -151,49 +168,49 @@ function App() {
             <option value="Sexta-Feira">Sexta-Feira</option>
             <option value="Sábado">Sábado</option>
             <option value="Domingo">Domingo</option>
-          </select>
+          </Select>
           <button>Adicionar tarefa</button>
         </form>
       </FormContainer>
       <PlannerDaysContainer>
         <DayOfWeekColumn>
-          <h4>Segunda-Feira</h4>
-          {monday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
-          })}
+          <WeekDayTitle>Segunda-Feira</WeekDayTitle>
+                {monday.map(task => {
+                  return <TaskLine key={task.id}><span>{task.text}</span><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
+                })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
-          <h4>Terça-Feira</h4>
+          <WeekDayTitle>Terça-Feira</WeekDayTitle>
           {tuesday.map(task => {
             return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
-          <h4>Quarta-Feira</h4>
+          <WeekDayTitle>Quarta-Feira</WeekDayTitle>
           {wednesday.map(task => {
             return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
-          <h4>Quinta-Feira</h4>
+          <WeekDayTitle>Quinta-Feira</WeekDayTitle>
           {thursday.map(task => {
             return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
-          <h4>Sexta-Feira</h4>
+          <WeekDayTitle>Sexta-Feira</WeekDayTitle>
           {friday.map(task => {
             return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
-          <h4>Sábado</h4>
+          <WeekDayTitle>Sábado</WeekDayTitle>
           {saturday.map(task => {
             return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
-          <h4>Domingo</h4>
+          <WeekDayTitle>Domingo</WeekDayTitle>
           {sunday.map(task => {
             return <TaskLine key={task.id}><p>{task.text}</p><button onClick={() => deleteTask(task.id)}>X</button></TaskLine>
           })}
