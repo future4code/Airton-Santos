@@ -44,7 +44,7 @@ describe("O usuario e capaz de adicionar tarefa", () => {
     })
     axios.post = jest.fn().mockResolvedValue()
 
-    const {getByPlaceholderText, getByText, getByTitle} = render(<App/>)
+    const {getByPlaceholderText, getByText, getByTitle} = render(<App />)
 
     const input = getByPlaceholderText(/tarefa/i)
     expect(input).toBeInTheDocument()

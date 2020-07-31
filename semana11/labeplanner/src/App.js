@@ -195,44 +195,44 @@ function App() {
       <PlannerDaysContainer>
         <DayOfWeekColumn>
           <WeekDayTitle>Segunda-Feira</WeekDayTitle>
-                {monday.map(task => {
-                  return <TaskLine key={task.id}><span>{task.text}</span><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
-                })}
+            {monday.map(task => {
+              return <TaskLine key={task.id}><span>{task.text}</span><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+          })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Terça-Feira</WeekDayTitle>
-          {tuesday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+            {tuesday.map(task => {
+              return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Quarta-Feira</WeekDayTitle>
-          {wednesday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+            {wednesday.map(task => {
+              return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Quinta-Feira</WeekDayTitle>
-          {thursday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+            {thursday.map(task => {
+              return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Sexta-Feira</WeekDayTitle>
-          {friday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+            {friday.map(task => {
+              return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Sábado</WeekDayTitle>
-          {saturday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+            {saturday.map(task => {
+              return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
         <DayOfWeekColumn>
           <WeekDayTitle>Domingo</WeekDayTitle>
-          {sunday.map(task => {
-            return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
+            {sunday.map(task => {
+              return <TaskLine key={task.id}><p>{task.text}</p><DeleteButton onClick={() => deleteTask(task.id)}>X</DeleteButton></TaskLine>
           })}
         </DayOfWeekColumn>
       </PlannerDaysContainer>
