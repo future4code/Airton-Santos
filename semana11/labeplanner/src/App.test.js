@@ -4,14 +4,6 @@ import userEvent from '@testing-library/user-event';
 import App from './App';
 import axios from 'axios'
 
-axios.get = jest.fn().mockResolvedValue({
-  data: []
-})
-
-axios.post = jest.fn().mockResolvedValue()
-
-axios.delete = jest.fn().mockResolvedValue()
-
 describe("O usuario e capaz de ver o input", () => {
   test("É esperado que o input esteja na tela", () => {
       const {getByPlaceholderText} = render(<App />)
@@ -245,6 +237,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Segunda", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Segunda-Feira"
       }]
@@ -265,6 +258,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Terca", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Terça-Feira"
       }]
@@ -285,6 +279,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Quarta", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Quarta-Feira"
       }]
@@ -305,6 +300,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Quinta", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Quinta-Feira"
       }]
@@ -325,6 +321,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Sexta", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Sexta-Feira"
       }]
@@ -345,6 +342,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Sabado", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Sábado"
       }]
@@ -365,6 +363,7 @@ describe("O usuario e capaz de deletar tarefa", () => {
   test("É esperado que o usuario consiga deletar uma tarefa na Domingo", async () => {
     axios.get = jest.fn().mockResolvedValue({
       data: [{
+        id: "1",
         text: "add task test",
         day: "Domingo"
       }]
