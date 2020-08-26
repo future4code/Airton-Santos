@@ -1,4 +1,5 @@
 import moment from 'moment'
+import fs from 'fs'
 moment.locale("pt-br")
 
 type evento = {
@@ -70,4 +71,9 @@ const criarEvento = (
     });
 };
 
-console.log(imprimeTodosEventos(todosEventos))
+const inicioEvento: moment.Moment = moment("27/09/2020 17:00", "DD/MM/YYYY HH:mm")
+const fimEvento: moment.Moment = moment("27/09/2020 17:30", "DD/MM/YYYY HH:mm")
+
+criarEvento('Comprar arroz', 'Comprar arroz no mercado', inicioEvento, fimEvento)
+
+imprimeTodosEventos(todosEventos)
