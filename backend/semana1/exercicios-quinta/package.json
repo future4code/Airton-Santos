@@ -10,10 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./build/index.js",
-    "start1": "tsc && node ./build/primeiraParte.js",
-    "start2": "tsc && node ./build/segundaParte.js",
-    "start3": "tsc && node ./build/terceiraParte.js"
+    "start": "tsc && node ./build/index.js"
   },
   "keywords": [],
   "author": "",
