@@ -4,7 +4,6 @@ import moment from 'moment'
 moment.locale("pt-br")
 
 let allAccounts = readDatabase()
-const today = moment()
 
 type account = {
     name: string,
@@ -22,6 +21,18 @@ const newAccount: account = {
     payments: []
 }
 
-const newAccounts: account[] = [...allAccounts, newAccount]
+const today = moment()
 
-writeToDatabase(newAccounts)
+const diffBirth = today.diff(newAccount.birth, 'years')
+
+const addAccount = (newAccounts: account) => {
+    if (diffBirth >= 18) {
+        console.log('Conta criada com sucesso!')
+        return [...allAccounts, newAccounts]
+    } else {
+        console.log('Criação de conta negada: Apenas usuários acima de 18 anos podem criar uma conta!')
+        return allAccounts
+    }
+}
+
+writeToDatabase(addAccount(newAccount))
