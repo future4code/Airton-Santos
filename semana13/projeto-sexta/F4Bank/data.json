@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Airton",
+    "cpf": "123.123.123-12",
+    "birth": "03/01/1987",
+    "balance": 0,
+    "payments": []
+  },
+  {
+    "name": "Diego",
+    "cpf": "122.122.122.23",
+    "birth": null,
+    "balance": 0,
+    "payments": []
+  },
+  {
+    "name": "Hyago",
+    "cpf": "222.222.222.22",
+    "birth": null,
+    "balance": 0,
+    "payments": []
+  },
+  {
+    "name": "Mateus",
+    "cpf": "333.333.333.33",
+    "birth": "1995-08-12T03:00:00.000Z",
+    "balance": 0,
+    "payments": []
+  }
+]
