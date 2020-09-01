@@ -43,10 +43,27 @@ import {Sellers} from './Seller'
 
 //Exercício 8
 // a. *Crie uma instância da classe `Seller`. Você vai reparar que essa classe já possui um construtor, pois quando **não colocamos um construtor na classe filha**, ela **herda** o construtor da classe Pai. Quais parâmetros você teve que passar para esse construtor?*
-const vendedor: Sellers = new Sellers('1', 'hyago@gmail.com', 'Hyago', '123', '22/01/2019', 7500)
+// const vendedor: Sellers = new Sellers('2', 'hyago@gmail.com', 'Hyago', '123', '22/01/2019', 7500)
 
 // b. *Imprima todas as informações da instância que você criou individualmente (ou seja, cada uma em uma linha própria). O que você conseguiu imprimir? O que não conseguiu? Por quê?*
 //Consegui imprimir todos os parâmetros, menos o password, pois é o único que não tem um método get.
 
 //Exercício 9
 // a. Agora, teste o método setter, atualizando esse valor para o que você quiser. É possível imprimir no terminal o valor salesQuantity da instância que você criou? Por quê?
+//É possível alterar pelo método set, e é possivel imprimir pelo método get.
+// console.log(`A quantidade de vendas é: ${vendedor.setSalesQuantity(40)}`)
+// console.log(`A quantidade de vendas é: ${vendedor.getSalesQuantity()}`)
+
+//Exercício 10
+// a. Crie um novo vendedor. Atribua a ele um valor para a salesQuantity. Convoque a função calculateTotalSalary e  imprima no terminal o valor. O que foi impresso no terminal? Por quê?
+// const vendedor: Sellers = new Sellers('3', 'mateus@gmail.com', 'Mateus', '123', '23/03/2019', 6500)
+// vendedor.setSalesQuantity(35)
+// console.log(`O total de salário do vendedor ${vendedor.getName()} é: R$${vendedor.calculateTotalSalary()}.`)
+
+//Foi impresso:
+// O total de salário do vendedor Mateus é: R$7075.
+
+//Exercício 11
+// const vendedor: Sellers = new Sellers('3', 'mateus@gmail.com', 'Mateus', '123', '23/03/2019', 6500)
+// vendedor.setSalesQuantity(35)
+// console.log(`O total de salário do vendedor ${vendedor.getName()} é: R$${vendedor.calculateTotalSalary()}.`)

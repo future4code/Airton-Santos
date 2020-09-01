@@ -3,6 +3,7 @@ import {User} from './User'
 export class Employee extends User {
     protected admissionDate: string;
     protected baseSalary: number;
+    static BENEFITS_VALUE: number = 400;
   
     constructor(
       id: string,
@@ -26,6 +27,6 @@ export class Employee extends User {
       }
       
       public calculateTotalSalary(): number {
-		return this.baseSalary + 400
+		return this.baseSalary + Employee.BENEFITS_VALUE;
 	}
   }
