@@ -80,3 +80,56 @@ const avgSalary = async (gender: string): Promise<any> => {
 
 ### Exercício 3
 
+a)É a forma de acessar as informações do endpoint pela query.
+
+b)É a forma de enviar para o localhost, as respostas da requisição.
+
+c)
+```
+app.get("/actor", async (req: Request, res: Response) => {
+  try {
+    const count = await countActors(req.query.gender as string);
+    res.status(200).send({
+      quantity: count,
+    });
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+```
+
+### Exercício 4
+
+a)
+```
+    app.post("/actor", async (req: Request, res: Response) => {
+    try {
+      await updateSalary(req.body.id, req.body.salary);
+      res.status(200).send({
+        message: "Success",
+      });
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+  });
+```
+
+b)
+```
+app.delete("/actor/:id", async (req: Request, res: Response) => {
+  try {
+    await deleteActor(req.params.id);
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+```
+
+### Exercício 5
+
