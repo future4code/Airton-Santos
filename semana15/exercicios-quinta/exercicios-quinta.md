@@ -232,3 +232,154 @@ JOIN Actor a ON a.id = mc.actor_id;
 
 ### Exercício 6
 
+a)
+M:N
+
+b)
+Criação dos Oscars:
+```
+CREATE TABLE Oscar (
+	id VARCHAR(255) PRIMARY KEY,
+    oscar_type VARCHAR(255) NOT NULL
+);
+
+INSERT INTO Oscar(id, oscar_type)
+VALUES(
+	"001",
+    "Melhor roteiro original"
+);
+
+INSERT INTO Oscar(id, oscar_type)
+VALUES(
+	"002",
+    "Melhor filme"
+);
+
+INSERT INTO Oscar(id, oscar_type)
+VALUES(
+	"003",
+    "Melhor roteiro adaptado"
+);
+
+INSERT INTO Oscar(id, oscar_type)
+VALUES(
+	"004",
+    "Melhor filme estrangeiro"
+);
+
+INSERT INTO Oscar(id, oscar_type)
+VALUES(
+	"005",
+    "Melhor direção"
+);
+
+INSERT INTO Oscar(id, oscar_type)
+VALUES(
+	"006",
+    "Melhor montagem"
+);
+```
+Criação da tabela relacional:
+```
+CREATE TABLE OscarWinners (
+	id VARCHAR(255) PRIMARY KEY,
+	year VARCHAR(255),
+	movie_id VARCHAR(255),
+	oscar_id VARCHAR(255),
+    FOREIGN KEY (movie_id) REFERENCES Movie(id),
+    FOREIGN KEY (oscar_id) REFERENCES Oscar(id)
+);
+```
+
+c)
+```
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"001",
+    "2000",
+    "001",
+    "001"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"002",
+    "2000",
+    "001",
+    "002"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"003",
+    "2001",
+    "002",
+    "003"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"004",
+    "2001",
+    "002",
+    "004"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"005",
+    "2002",
+    "003",
+    "005"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"006",
+    "2002",
+    "003",
+    "006"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"007",
+    "2003",
+    "004",
+    "001"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"008",
+    "2003",
+    "004",
+    "002"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"009",
+    "2004",
+    "005",
+    "003"
+);
+
+INSERT INTO OscarWinners(id, year, movie_id, oscar_id)
+VALUES(
+	"010",
+    "2004",
+    "005",
+    "004"
+);
+```
+
+d)
+```
+SELECT Movie.title, Oscar.oscar_type, OscarWinners.year
+FROM OscarWinners
+JOIN Movie
+ON OscarWinners.movie_id = Movie.id
+JOIN Oscar
+ON Oscar.id = OscarWinners.oscar_id;
+```
