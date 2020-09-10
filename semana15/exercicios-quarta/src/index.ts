@@ -202,20 +202,20 @@ import { AddressInfo } from "net";
     }
   });
 
-    const createMovie = async (
+  const createMovie = async (
     id: string,
     title: string,
     synopsis: string,
     releaseDate: Date,
-    playingLimitDate: Date
+    rating: number
   ) => {
     await connection
       .insert({
         id: id,
         title: title,
         synopsis: synopsis,
-        releas_date: releaseDate,
-        playing_limit_date: playingLimitDate,
+        release_date: releaseDate,
+        rating: rating,
       })
       .into("Movie");
   };
@@ -227,7 +227,7 @@ import { AddressInfo } from "net";
         req.body.title,
         req.body.synopsis,
         req.body.releaseDate,
-        req.body.playingLimitDate
+        req.body.rating
       );
   
       res.status(200).send({
