@@ -240,6 +240,13 @@ import { AddressInfo } from "net";
     }
   });
 
+    const searchMovie = async (name: string): Promise<any> => {
+      const result = await connection.raw(`
+        SELECT * FROM Movie WHERE name = "${name}"
+      `)
+      return console.log(result)
+    }
+
     app.get("/movie/search", async (req: Request, res: Response) => {
     try {
       const movies = await searchMovie(req.query.query as string);
