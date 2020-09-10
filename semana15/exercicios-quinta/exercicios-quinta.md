@@ -199,9 +199,36 @@ a)
 Para adicionar mais uma tabela ao resultado.
 
 b)
+```
+SELECT m.id as movie_id, m.title, a.id as actor_id, a.name FROM Movie m
+LEFT JOIN MovieCast mc ON m.id = mc.movie_id
+JOIN Actor a ON a.id = mc.actor_id;
+```
 
 c)
+```
+SELECT m.id as movie_id, m,title, a.id as actor_id, a.name FROM Movie m
+LEFT JOIN MovieCast mc ON m.id = mc.movie_id
+JOIN Actor a ON a.id = mc.actor_id;
+```
+Error Code: 1054. Unknown column 'm' in 'field list'
+
+ele não reconhece porque tem uma vírgula no lugar de ponto em m.title.
 
 d)
+```
+SELECT 
+	m.id as movie_id, 
+    m.title, 
+    a.id as actor_id, 
+    a.name, 
+    r.rate, 
+    r.comment 
+FROM Movie m
+LEFT JOIN Rating r on r.movie_id = m.id
+LEFT JOIN MovieCast mc ON m.id = mc.movie_id
+JOIN Actor a ON a.id = mc.actor_id;
+```
 
 ### Exercício 6
+
