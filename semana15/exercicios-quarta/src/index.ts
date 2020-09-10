@@ -166,8 +166,8 @@ import { AddressInfo } from "net";
         req.body.id,
         req.body.name,
         req.body.salary,
-        new Date(req.body.dateOfBirth),
-        req.body.salary
+        new Date(req.body.birth_date),
+        req.body.gender
       );
   
       res.status(200).send();
