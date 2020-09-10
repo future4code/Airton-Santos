@@ -201,3 +201,55 @@ import { AddressInfo } from "net";
       });
     }
   });
+
+    const createMovie = async (
+    id: string,
+    title: string,
+    synopsis: string,
+    releaseDate: Date,
+    playingLimitDate: Date
+  ) => {
+    await connection
+      .insert({
+        id: id,
+        title: title,
+        synopsis: synopsis,
+        releas_date: releaseDate,
+        playing_limit_date: playingLimitDate,
+      })
+      .into("Movie");
+  };
+  
+    app.post("/movie", async (req: Request, res: Response) => {
+    try {
+      await createMovie(
+        req.body.id,
+        req.body.title,
+        req.body.synopsis,
+        req.body.releaseDate,
+        req.body.playingLimitDate
+      );
+  
+      res.status(200).send({
+        message: "Success"
+      });
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+  });
+
+    app.get("/movie/search", async (req: Request, res: Response) => {
+    try {
+      const movies = await searchMovie(req.query.query as string);
+  
+      res.status(200).send({
+        movies: movies,
+      });
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+  });
