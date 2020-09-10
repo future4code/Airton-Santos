@@ -191,24 +191,17 @@ app.post("/movie/:id", async (req: Request, res: Response) => {
 ```
 
 ### Exercício 7
-```
-app.get("/movie/search", async (req: Request, res: Response) => {
-  try {
-    const movies = await searchMovie(req.query.query as string);
-
-    res.status(200).send({
-      movies: movies,
-    });
-  } catch (err) {
-    res.status(400).send({
-      message: err.message,
-    });
-  }
-});const getAllMovies = async (): Promise<any> => {
-  const result = await connection.raw(`
-    SELECT * FROM Movie LIMIT 15
-  `);
-
-  return result[0];
-};
+```app.get("/movie/search/:title", async (req: Request, res: Response) => {
+    try {
+      const movies = await searchMovie(req.query.query as string);
+  
+      res.status(200).send({
+        movies: movies,
+      });
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+  });
 ```
