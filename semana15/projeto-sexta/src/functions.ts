@@ -30,6 +30,8 @@ console.error(`Failure upon starting server.`);
 }
 });
 
+//Função para criar usuário:
+
   export const createTodoListUser = async (
     name: string,
     nickname: string,
@@ -43,6 +45,34 @@ console.error(`Failure upon starting server.`);
       })
       .into("TodoListUser");
   };
+
+  //Função para pegar usuário pela id:
+
+  export const getTodoListUserById = async (id: number): Promise<any> => {
+    const result = await connection.raw(`
+      SELECT TodoListUser.id, TodoListUser.nickname FROM TodoListUser WHERE id = '${id}'
+    `);
+      
+      console.log(result[0][0]);
+      return result[0][0];
+  };
+
+  //Função para editar usuário:
+
+  export const editTodoListUser = async (
+    id: number,
+    name: string,
+    nickname: string,
+    ): Promise<any> => {
+    await connection("TodoListUser")
+      .update({
+        name: name,
+        nickname: nickname
+      })
+      .where("id", id);
+  };
+
+  //Função para criar tarefa:
 
   export const createTodoListTask = async (
     title: string,
@@ -60,31 +90,7 @@ console.error(`Failure upon starting server.`);
       .into("TodoListTask");
   };
 
-  export const editTodoListUser = async (
-    id: number,
-    name: string,
-    nickname: string,
-    email: string
-    ): Promise<any> => {
-    await connection("TodoListUser")
-      .update({
-        name: name,
-        nickname: nickname,
-        email: email,
-      })
-      .where("id", id);
-  };
-
-  // export const getTodoListUserById = async (id: number): Promise<any> => {
-  //   const result = await connection.raw(`
-  //     SELECT * FROM TodoListUser WHERE id = '${id}'
-  //   `);
-      
-  //     console.log(result[0][0]);
-  //     return result[0][0];
-  // };
-
-  getTodoListUserById(1);
+  //Função para pegar tarefa pela id:
 
   export const getTodoListTaskById = async (id: number): Promise<any> => {
     const result = await connection.raw(`
