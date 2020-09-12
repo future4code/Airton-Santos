@@ -94,7 +94,16 @@ console.error(`Failure upon starting server.`);
 
   export const getTodoListTaskById = async (id: number): Promise<any> => {
     const result = await connection.raw(`
-      SELECT * FROM TodoListTask WHERE id = '${id}'
+    SELECT TodoListTask.id,
+    TodoListTask.title,
+    TodoListTask.description,
+    TodoListTask.status,
+    TodoListTask.limit_date,
+    TodoListTask.creator_user_id,
+    TodoListUser.nickname
+    FROM TodoListTask
+    JOIN TodoListUser
+    ON TodoListTask.creator_user_id = TodoListUser.id WHERE TodoListTask.id = '${id}'
     `);
       
       console.log(result[0][0]);
