@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { signup } from "./endpoints/signup";
 import {login} from './endpoints/login';
 import { getUserProfile } from "./data/getUserProfile";
+import { HashManager } from "./services/HashManager";
 
 dotenv.config();
 
@@ -22,3 +23,5 @@ console.log(`Server is running in http://localhost:${address.port}`);
 console.error(`Failure upon starting server.`);
 }
 });
+
+// new HashManager().hash('oi')
