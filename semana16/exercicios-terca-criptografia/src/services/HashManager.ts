@@ -8,7 +8,6 @@ export class HashManager {
         const cost: number = Number(process.env.BCRYPT_COST)
         const salt: string = await bcrypt.genSalt(cost)
         const cypherText: string = await bcrypt.hash(plainText, salt)
-        console.log(cypherText)
         return cypherText
     }
 

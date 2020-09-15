@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
+import { BaseDatabase } from "../data/BaseDatabase";
 import { UserDatabase } from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
+import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/idGenerator";
 
 export const signup = async (req: Request, res: Response) => {
@@ -8,10 +10,11 @@ export const signup = async (req: Request, res: Response) => {
         const userData = {
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            role: req.body.role
         }
 
-        if (!userData.name || !userData.email || !userData.password) {
+        if (!userData.name || !userData.email || !userData.password || !userData.role) {
             throw new Error('Insira todas as informações necessárias para o cadastro')
         }
         
@@ -26,11 +29,20 @@ export const signup = async (req: Request, res: Response) => {
         const idGenerator = new IdGenerator();
         const id = idGenerator.generate();
 
+        const hashManager = new HashManager();
+        const cypherPassword = await hashManager.hash(userData.password);
+
         const userDatabase = new UserDatabase();
-        await userDatabase.createUser(id, userData.name, userData.email, userData.password);
+        await userDatabase.createUser(
+            id,
+            userData.name,
+            userData.email,
+            cypherPassword,
+            userData.role
+        );
 
         const auth = new Authenticator();
-        const token = auth.generateToken({id});
+        const token = auth.generateToken({id, role: userData.role});
 
         res.status(200).send({
             message: 'Usuário criado com sucesso!',
@@ -41,5 +53,7 @@ export const signup = async (req: Request, res: Response) => {
         res.status(400).send({
             message: err.message
         })
+    } finally {
+        await BaseDatabase.destroyConnection()
     }
 }

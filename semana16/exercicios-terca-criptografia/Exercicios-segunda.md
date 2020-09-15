@@ -28,6 +28,7 @@ export class HashManager {
     }
 }
 ```
+
 ### Exercício 2
 
 a)
@@ -35,12 +36,230 @@ O cadastro deve ser implementado primeiro, pois ele armazena o hash no banco. A 
 
 b)
 ```
+export const signup = async (req: Request, res: Response) => {
+    try{
+        const userData = {
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        }
 
+        if (!userData.name || !userData.email || !userData.password) {
+            throw new Error('Insira todas as informações necessárias para o cadastro')
+        }
+        
+        if (userData.email.indexOf('@') === -1) {
+            throw new Error('E-mail inválido')
+        }
+        
+        if (!req.body.password || req.body.password.length < 6) {
+            throw new Error("Invalid password");
+          }
+
+        const idGenerator = new IdGenerator();
+        const id = idGenerator.generate();
+
+        const hashManager = new HashManager();
+        const cypherPassword = await hashManager.hash(userData.password);
+
+        const userDatabase = new UserDatabase();
+        await userDatabase.createUser(
+            id,
+            userData.name,
+            userData.email,
+            cypherPassword
+        );
+
+        const auth = new Authenticator();
+        const token = auth.generateToken({id});
+
+        res.status(200).send({
+            message: 'Usuário criado com sucesso!',
+            token
+        })
+
+    } catch(err) {
+        res.status(400).send({
+            message: err.message
+        })
+    }
+}
 ```
 
 c)
 ```
+export const login = async (req: Request, res: Response) => {
+    try{
+        const userData = {
+            email: req.body.email,
+            password: req.body.password
+        }
 
+        if (!userData.email || !userData.password || userData.email.indexOf("@") === -1) {
+            throw new Error('Insira todas as informações necessárias para o login')
+        }
+
+        const userDatabase = new UserDatabase();
+        const user = await userDatabase.getUserByEmail(userData.email);
+
+        const passwordIsCorrect: boolean = await new HashManager().compare(
+            userData.password,
+            user.password
+        );
+
+        if (!passwordIsCorrect) {
+            throw new Error('Usuário ou senha inválidos')
+        }
+
+        const authenticator = new Authenticator();
+        const token = authenticator.generateToken({id: user.id});
+
+        res.status(200).send({
+            message: 'Usuário logado com sucesso!',
+            token
+        })
+
+    } catch(err) {
+        res.status(400).send({
+            message: err.message
+        })
+    }
+}
 ```
 
 d)
+Não precisamos, pois assim que o usuário já estiver logado, já vai ter passado pela segurança, além disso é um metodo get, que só funciona com o usuário já logado.
+
+### Exercício 3
+
+a)
+```
+ALTER TABLE nome_da_tabela ADD COLUMN role VARCHAR(255) DEFAULT "normal" 
+```
+
+b)
+```
+export class Authenticator {
+    public generateToken(data: AuthenticationData): string {
+        return jwt.sign(
+        data,
+        process.env.JWT_KEY as string,
+        {expiresIn: process.env.JWT_EXPIRES_IN as string}
+        )
+    }
+
+    public getData(token: string): AuthenticationData{
+        const data = jwt.verify(
+            token,
+            process.env.JWT_KEY as string
+        ) as any
+        return {
+            id: data.id,
+            role: data.role
+        }
+    }
+}
+
+export interface AuthenticationData {
+    id: string;
+    role: string;
+}
+```
+
+c)
+```
+export const signup = async (req: Request, res: Response) => {
+    try{
+        const userData = {
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            role: req.body.role
+        }
+
+        if (!userData.name || !userData.email || !userData.password || !userData.role) {
+            throw new Error('Insira todas as informações necessárias para o cadastro')
+        }
+        
+        if (userData.email.indexOf('@') === -1) {
+            throw new Error('E-mail inválido')
+        }
+        
+        if (!req.body.password || req.body.password.length < 6) {
+            throw new Error("Invalid password");
+          }
+
+        const idGenerator = new IdGenerator();
+        const id = idGenerator.generate();
+
+        const hashManager = new HashManager();
+        const cypherPassword = await hashManager.hash(userData.password);
+
+        const userDatabase = new UserDatabase();
+        await userDatabase.createUser(
+            id,
+            userData.name,
+            userData.email,
+            cypherPassword,
+            userData.role
+        );
+
+        const auth = new Authenticator();
+        const token = auth.generateToken({id, role: userData.role});
+
+        res.status(200).send({
+            message: 'Usuário criado com sucesso!',
+            token
+        })
+
+    } catch(err) {
+        res.status(400).send({
+            message: err.message
+        })
+    }
+}
+```
+
+d)
+```
+export const login = async (req: Request, res: Response) => {
+    try{
+        const userData = {
+            email: req.body.email,
+            password: req.body.password
+        }
+
+        if (!userData.email || !userData.password || userData.email.indexOf("@") === -1) {
+            throw new Error('Insira todas as informações necessárias para o login')
+        }
+
+        const userDatabase = new UserDatabase();
+        const user = await userDatabase.getUserByEmail(userData.email);
+
+        const passwordIsCorrect: boolean = await new HashManager().compare(
+            userData.password,
+            user.password
+        );
+
+        if (!passwordIsCorrect) {
+            throw new Error('Usuário ou senha inválidos')
+        }
+
+        const authenticator = new Authenticator();
+        const token = authenticator.generateToken({id: user.id, role: user.role});
+
+        res.status(200).send({
+            message: 'Usuário logado com sucesso!',
+            token
+        })
+
+    } catch(err) {
+        res.status(400).send({
+            message: err.message
+        })
+    }
+}
+```
+
+### Exercício 4
+

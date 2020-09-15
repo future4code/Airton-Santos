@@ -3,13 +3,14 @@ import { BaseDatabase } from "./BaseDatabase";
 export class UserDatabase extends BaseDatabase {
     private static TABLE_NAME: string = 'Users';
 
-    public async createUser(id: string, name: string, email: string, password: string): Promise<void> {
+    public async createUser(id: string, name: string, email: string, password: string, role: string): Promise<void> {
         await this.getConnection()
         .insert({
             id,
             name,
             email,
-            password
+            password,
+            role
         }).into(UserDatabase.TABLE_NAME)
     }
 

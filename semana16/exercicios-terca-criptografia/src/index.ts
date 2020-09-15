@@ -3,7 +3,7 @@ import { AddressInfo } from "net";
 import dotenv from 'dotenv';
 import { signup } from "./endpoints/signup";
 import {login} from './endpoints/login';
-import { getUserProfile } from "./data/getUserProfile";
+import { getUserProfile } from "./endpoints/getUserProfile";
 import { HashManager } from "./services/HashManager";
 
 dotenv.config();
