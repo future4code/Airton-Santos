@@ -5,6 +5,8 @@ import { signup } from "./endpoints/signup";
 import {login} from './endpoints/login';
 import { getUserProfile } from "./endpoints/getUserProfile";
 import { HashManager } from "./services/HashManager";
+import { deleteUser } from "./endpoints/deleteUser";
+import { getUserProfileById } from "./endpoints/getUserProfileById";
 
 dotenv.config();
 
@@ -14,6 +16,8 @@ app.use(express.json());
 app.post('/user/signup', signup);
 app.post('/user/login', login);
 app.get('/user/profile', getUserProfile);
+app.delete('/user/:id', deleteUser);
+app.get('/user/:id', getUserProfileById);
 
 const server = app.listen(process.env.PORT || 3000, () => {
 if (server) {

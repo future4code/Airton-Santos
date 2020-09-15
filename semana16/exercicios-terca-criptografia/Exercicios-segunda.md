@@ -263,3 +263,136 @@ export const login = async (req: Request, res: Response) => {
 
 ### Exercício 4
 
+a)
+```
+export const getUserProfile = async (req: Request, res: Response) => {
+    try {
+
+        const token = req.headers.authorization as string;
+
+        const authenticator = new Authenticator();
+        const authenticationData = authenticator.getData(token);
+
+        const userDatabase = new UserDatabase();
+        const user = await userDatabase.getUserById(authenticationData.id);
+
+        if(user === undefined) {
+            throw new Error('Usuário não encontrado!')
+        }
+
+        if(authenticationData.role !== "admin") {
+            throw new Error('Usuário não autorizado!')
+        }
+
+        res.status(200).send(user)
+
+    } catch(err) {
+        res.status(err.statusCode || 400).send({
+            message: err.message
+        })
+    } finally {
+        await BaseDatabase.destroyConnection()
+    }
+}
+```
+
+### Exercício 5
+
+```
+export const deleteUser = async (req: Request, res: Response) => {
+    try{
+      const token = req.headers.authorization as string;
+
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+  
+      if (authenticationData.role !== "admin") {
+        throw new Error("Somente administradores podem deletar um usuário");
+      }
+  
+      const id = req.params.id;
+  
+      const userDatabase = new UserDatabase();
+      await userDatabase.deleteUser(id);
+  
+      res.sendStatus(200);
+
+    } catch(err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    } finally {
+        await BaseDatabase.destroyConnection()
+    }
+}
+```
+
+### Exercício 6
+
+```
+export const getUserProfileById = async (req: Request, res: Response) => {
+    try {
+
+    const token = req.headers.authorization as string;
+
+    const authenticator = new Authenticator();
+    authenticator.getData(token);
+
+    const id = req.params.id;
+
+    const userDatabase = new UserDatabase();
+    const user = await userDatabase.getUserById(id);
+
+    res.status(200).send({
+        id: user.id,
+        email: user.email,
+        role: user.role
+        })
+
+    } catch(err) {
+        res.status(400).send({
+          message: err.message
+        })
+    } finally {
+        await BaseDatabase.destroyConnection()
+    }
+}
+```
+
+### Exercício 7
+
+```
+import Knex from "knex";
+import knex from 'knex';
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export abstract class BaseDatabase {
+    private static connection: Knex | null = null;
+
+    protected getConnection(): Knex {
+        if (BaseDatabase.connection === null) {
+            BaseDatabase.connection = knex ({
+                client: "mysql",
+                connection: {
+                    host: process.env.DB_HOST,
+                    port: Number(process.env.DB_PORT || "3306"),
+                    user: process.env.DB_USER,
+                    password: process.env.DB_PASSWORD,
+                    database: process.env.DB_NAME
+                }
+            })
+        }
+        return BaseDatabase.connection;
+    }
+
+    static async destroyConnection(): Promise<void> {
+            if(BaseDatabase.connection) {
+            await BaseDatabase.connection.destroy()
+            BaseDatabase.connection = null
+        }
+    
+    }
+}
+```
