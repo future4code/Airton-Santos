@@ -3,7 +3,7 @@ import { Authenticator } from "../services/Authenticator";
 import {UserDatabase} from '../data/UserDatabase'
 import { BaseDatabase } from "../data/BaseDatabase";
 
-export const getRecipesFeed = async (req: Request, res: Response) => {
+export const getAllUsers = async (req: Request, res: Response) => {
     try {
 
         const token = req.headers.authorization as string;
@@ -13,7 +13,7 @@ export const getRecipesFeed = async (req: Request, res: Response) => {
 
         const userDatabase = new UserDatabase();
 
-        const data = await userDatabase.getRecipesFeed(authenticationData.id)
+        const data = await userDatabase.getAllUsers(authenticationData.id)
 
         res.status(200).send({
             data

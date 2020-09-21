@@ -3,7 +3,7 @@ import { AddressInfo } from "net";
 import dotenv from 'dotenv';
 import { signup } from "./endpoints/signup";
 import { login } from "./endpoints/login";
-import { getRecipesFeed } from "./endpoints/getRecipesFeed";
+import { getAllUsers } from "./endpoints/getAllUsers";
 
 dotenv.config();
 
@@ -19,6 +19,6 @@ const server = app.listen(process.env.PORT || 3000, () => {
     }
     });
 
-    app.post('/user/signup', signup);
+    app.post('/signup', signup);
     app.post('/login', login);
-    app.get('/user/feed', getRecipesFeed);
+    app.get('/all', getAllUsers);
