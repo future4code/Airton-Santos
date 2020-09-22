@@ -8,7 +8,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
         const token = req.headers.authorization as string;
 
         const getAllUsers = new UserBusiness();
-        const data = getAllUsers.getAllUsers(token);
+        const data = await getAllUsers.getAllUsers(token);
 
         res.status(200).send({
             data

@@ -68,10 +68,10 @@ export class UserBusiness {
     public async getAllUsers(token: string): Promise<any> {
 
         const authenticator = new Authenticator();
-        const authenticationData = authenticator.getData(token);
+        authenticator.getData(token);
 
         const userDatabase = new UserDatabase();
-        const data = await userDatabase.getAllUsers(authenticationData.id)
+        const data = await userDatabase.getAllUsers()
 
         return data
     }

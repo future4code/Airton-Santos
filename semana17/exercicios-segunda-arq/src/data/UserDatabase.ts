@@ -30,12 +30,12 @@ export class UserDatabase extends BaseDatabase {
         }
     };
 
-    public async getAllUsers(id: string): Promise<any> {
+    public async getAllUsers(): Promise<any> {
         try {
             const result = await this.getConnection()
             .select('*')
             .from(UserDatabase.TABLE_USERS)
-            return result[0]
+            return result
         } catch(err) {
             throw new Error(err.sqlMessage || err.message);
         }
