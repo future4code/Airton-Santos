@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import { Authenticator } from "../services/Authenticator";
-import {UserDatabase} from '../data/UserDatabase'
+import { UserBusiness } from "../business/UserBusiness";
 import { BaseDatabase } from "../data/BaseDatabase";
 
 export const getAllUsers = async (req: Request, res: Response) => {
@@ -8,12 +7,8 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
         const token = req.headers.authorization as string;
 
-        const authenticator = new Authenticator();
-        const authenticationData = authenticator.getData(token);
-
-        const userDatabase = new UserDatabase();
-
-        const data = await userDatabase.getAllUsers(authenticationData.id)
+        const getAllUsers = new UserBusiness();
+        const data = getAllUsers.getAllUsers(token);
 
         res.status(200).send({
             data

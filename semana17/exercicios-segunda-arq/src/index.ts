@@ -1,9 +1,9 @@
 import express from "express";
 import { AddressInfo } from "net";
 import dotenv from 'dotenv';
-import { signup } from "./endpoints/signup";
-import { login } from "./endpoints/login";
-import { getAllUsers } from "./endpoints/getAllUsers";
+import { getAllUsers } from "./controller/getAllUsers";
+import { login } from "./controller/login";
+import { signUp } from "./controller/signUp";
 
 dotenv.config();
 
@@ -19,6 +19,6 @@ const server = app.listen(process.env.PORT || 3000, () => {
     }
     });
 
-    app.post('/signup', signup);
+    app.post('/signup', signUp);
     app.post('/login', login);
     app.get('/all', getAllUsers);
