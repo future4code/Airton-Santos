@@ -75,4 +75,13 @@ export class UserBusiness {
 
         return data
     }
+
+    public async deleteUser(id: string, token: string): Promise<void> {
+
+        const authenticator = new Authenticator();
+        authenticator.getData(token);
+
+        const userDatabase = new UserDatabase();
+        await userDatabase.deleteUser(id)
+    }
 }

@@ -2,17 +2,17 @@ import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { BaseDatabase } from "../data/BaseDatabase";
 
-export const login = async (req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
     try{
-        const email = req.body.email;
-        const password = req.body.password;
+        const token = req.headers.authorization as string;
+
+        const id = req.params.id;
 
         const userBusiness = new UserBusiness();
-        const token = await userBusiness.login(email, password);
+        await userBusiness.deleteUser(id, token);
 
         res.status(200).send({
-            message: 'Usuário logado com sucesso!',
-            token
+            message: 'Usuário apagado com sucesso!'
         })
 
     } catch(err) {
