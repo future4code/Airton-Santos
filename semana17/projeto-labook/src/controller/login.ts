@@ -13,7 +13,7 @@ export const login = async (req: Request, res: Response) => {
         res.status(200).send({
             message: 'Usuário logado com sucesso!',
             token
-        })
+        });
 
     } catch(err) {
         res.status(400).send({
