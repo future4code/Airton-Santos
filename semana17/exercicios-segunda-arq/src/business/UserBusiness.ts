@@ -7,7 +7,7 @@ import {USER_ROLES} from "../services/Authenticator";
 export class UserBusiness {
 
     public async signUp(name: string, email: string, password: string, role: string): Promise<string> {
-        
+
         if (!name || !email || !password || !role) {
             throw new Error('Insira todas as informações necessárias para o cadastro')
         }
@@ -60,7 +60,7 @@ export class UserBusiness {
         }
 
         const authenticator = new Authenticator();
-        const token = authenticator.generateToken(user);
+        const token = authenticator.generateToken({id: user.id, role: USER_ROLES.ADMIN });
 
         return token;
     }

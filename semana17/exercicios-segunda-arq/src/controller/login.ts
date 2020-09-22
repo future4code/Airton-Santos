@@ -8,7 +8,7 @@ export const login = async (req: Request, res: Response) => {
             const password = req.body.password;
 
         const userBusiness = new UserBusiness();
-        const token = userBusiness.login(email, password);
+        const token = await userBusiness.login(email, password);
 
         res.status(200).send({
             message: 'Usuário logado com sucesso!',
