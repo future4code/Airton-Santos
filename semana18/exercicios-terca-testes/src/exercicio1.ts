@@ -8,7 +8,7 @@ export interface Character {
 export const validateCharacter = (input: Character): boolean => {
     if (
     !input.name ||
-        input.life === undefined || 
+    input.life === undefined || 
     input.strength === undefined ||
     input.defense === undefined
     ) {
