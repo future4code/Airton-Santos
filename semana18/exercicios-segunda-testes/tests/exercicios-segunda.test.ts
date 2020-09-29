@@ -1,3 +1,4 @@
+import { createPost } from '../src/controller/createPost';
 import {Casino, LOCATION, NACIONALITY, performPurchase, User, UserClient, verifyAge} from '../src/index'
 
 describe('testes para a função de conta do usuário', () => {
@@ -224,4 +225,29 @@ describe('testes da função do exercício 3', () => {
         expect(result.americans.unallowed.length).toBeLessThan(1);
         expect(result.americans.allowed.length).toBe(2);
     });
+});
+
+describe('testes das funções assíncronas', () => {
+    test("Create Post", async () => {
+        const post = {
+        id: "id do post",
+        title: "Título",
+        content: "Conteúdo",
+        };
+    
+        await createPost(post);
+        const postFromDb = await getPostById(post.id);
+    
+        expect(postFromDb).not.toBe(undefined);
+        expect(postFromDb).toEqual({
+        id: "id do post",
+        title: "Título",
+        content: "Conteúdo",
+        });
+    });
+
+    // afterAll(async () => {
+    //     await deletePostById("id do post");
+    //     await destroyConnection();
+    // });
 });
