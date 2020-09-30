@@ -1,9 +1,18 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
+import { UserDatabase } from "../data/UserDatabase";
+import { HashGenerator } from "../services/hashGenerator";
+import { IdGenerator } from "../services/idGenerator";
+import { TokenGenerator } from "../services/tokenGenerator";
 
 export class UserController {
   
-  private static userBusiness = new UserBusiness();
+  private static userBusiness = new UserBusiness(
+    new UserDatabase(),
+    new IdGenerator(),
+    new HashGenerator(),
+    new TokenGenerator()
+  );
 
   public async signup(req: Request, res: Response) {
     try {

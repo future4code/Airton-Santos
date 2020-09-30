@@ -51,4 +51,11 @@ export class UserDatabase extends BaseDataBase {
       return this.toModel(res);
     });
   }
+
+  public async getProfile(id: string): Promise<User | undefined> {
+    const result = await super.getConnection().raw(`
+      SELECT * from ${this.tableName} WHERE id = '${id}'
+      `);
+    return this.toModel(result[0][0]);
+  }
 }
