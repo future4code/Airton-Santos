@@ -278,7 +278,7 @@ describe("Testing UserBusiness.getUserById", () => {
    let tokenGenerator = {};
    let idGenerator = {};
 
-   test("Should return 'User not found' when user does not exist", async () => {
+   test("Should return success", async () => {
    const getUserById = jest.fn(
       (id: string) =>
          new User(
@@ -379,34 +379,61 @@ describe("Testing UserBusiness.getProfile", () => {
    let idGenerator = {};
 
    test("Should return 'User not found' when user does not exist", async () => {
-      const getProfile = jest.fn(
-         (id: string) =>
-            new User(
-            "id",
-            "Astrodev",
-            "astrodev@gmail.com",
-            "hash",
-            stringToUserRole("NORMAL")
-            )
-      );
-   
+   expect.assertions(2);
+   try {
+      const getProfile = jest.fn();
       userDatabase = { getProfile };
-   
+
       const userBusiness = new UserBusiness(
          userDatabase as any,
          hashGenerator as any,
          tokenGenerator as any,
          idGenerator as any
       );
-   
-      const user = await userBusiness.getProfile("id");
-   
-      expect(getProfile).toHaveBeenCalledWith("id");
-      expect(user).toEqual({
-         id: "id",
-         name: "Astrodev",
-         email: "astrodev@gmail.com",
-         role: UserRole.NORMAL,
-      });
-      });
+
+      await userBusiness.getProfile("id do not exist");
+   } catch (err) {
+      expect(err.statusCode).toBe(404);
+      expect(err.message).toBe("User not found");
+   }
+   });
+});
+
+describe("Testing UserBusiness.getProfile", () => {
+   let userDatabase = {};
+   let hashGenerator = {};
+   let tokenGenerator = {};
+   let idGenerator = {};
+
+   test("Should return success", async () => {
+   const getProfile = jest.fn(
+      (id: string) =>
+         new User(
+         "id",
+         "Astrodev",
+         "astrodev@gmail.com",
+         "hash",
+         stringToUserRole("ADMIN")
+         )
+   );
+
+   userDatabase = { getProfile };
+
+   const userBusiness = new UserBusiness(
+      userDatabase as any,
+      hashGenerator as any,
+      tokenGenerator as any,
+      idGenerator as any
+   );
+
+   const user = await userBusiness.getProfile("id");
+
+   expect(getProfile).toHaveBeenCalledWith("id");
+   expect(user).toEqual({
+      id: "id",
+      name: "Astrodev",
+      email: "astrodev@gmail.com",
+      role: UserRole.ADMIN,
+   });
+   });
 });
