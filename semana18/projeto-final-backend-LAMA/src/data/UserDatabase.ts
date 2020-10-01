@@ -39,17 +39,4 @@ export class UserDatabase extends BaseDatabase {
             throw new Error (error.sqlMessage || error.message)
         }
     };
-
-    public async getUserById (id: string): Promise<User> {
-        try {
-            const result = await this.getConnection()
-            .select("*")
-            .from(UserDatabase.TABLE_NAME)
-            .where("id", id)
-
-            return result[0]
-        } catch (error) {
-            throw new Error (error.sqlMessage || error.message)
-        }
-    }
 }; 
