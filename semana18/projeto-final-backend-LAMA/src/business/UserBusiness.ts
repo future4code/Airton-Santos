@@ -19,6 +19,10 @@ export class UserBusiness {
         if (password.length < 6) {
             throw new Error("Senha inválida");
         }
+        
+        if (!password.match('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$')) {
+            throw new Error("Senha deve ter no mínimo 8 caracteres, e conter uma letra maiúscula e uma minúscula");
+        }
 
         const idGenerator = new IdGenerator();
         const id = idGenerator.generate();
