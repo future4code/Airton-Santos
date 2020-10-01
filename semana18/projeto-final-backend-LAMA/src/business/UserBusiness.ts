@@ -6,7 +6,19 @@ import {USER_ROLES} from "../services/Authenticator";
 
 export class UserBusiness {
 
-    public async signUp(name: string, email: string, password: string, role: USER_ROLES): Promise<string> {
+    constructor(
+        private userDatabase: UserDatabase,
+        private idGenerator: IdGenerator,
+        private hashManager: HashManager ,
+        private authenticator: Authenticator
+    ){}
+
+    public async signUp(
+        name: string,
+        email: string,
+        password: string,
+        role: USER_ROLES
+        ) {
 
         if (!name || !email || !password) {
             throw new Error('Insira todas as informações necessárias para o cadastro')
@@ -24,14 +36,11 @@ export class UserBusiness {
             throw new Error("Senha deve ter no mínimo 8 caracteres, e conter uma letra maiúscula e uma minúscula");
         }
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generate();
+        const id = this.idGenerator.generate();
 
-        const hashManager = new HashManager();
-        const cypherPassword = await hashManager.hash(password);
+        const cypherPassword = await this.hashManager.hash(password);
 
-        const userDatabase = new UserDatabase();
-        await userDatabase.createUser(
+        await this.userDatabase.createUser(
             id,
             name,
             email,
@@ -39,10 +48,12 @@ export class UserBusiness {
             role
         );
 
-        const auth = new Authenticator();
-        const token = auth.generateToken({id, role: USER_ROLES.ADMIN });
+        const token = this.authenticator.generateToken({
+            id,
+            role
+        });
 
-        return token;
+        return { token };
     }
 
     public async login(email: string, password: string): Promise<string> {
