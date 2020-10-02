@@ -37,7 +37,7 @@ export class ArtistsDatabase extends BaseDatabase {
         const result = await this.getConnection().raw(`
           SELECT * from ${ArtistsDatabase.TABLE_NAME} WHERE id LIKE '%${id}%' AND name LIKE '%${name}%'
         `);
-        return (result[0]);
+        return (result[0]); 
     }
 
 };
