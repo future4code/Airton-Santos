@@ -41,7 +41,6 @@ export class ShowsController {
             res.status(200).send({
                 shows
             })
-            console.log(shows)
         } catch (error) {
             res.status(error.errorCode || 400).send({
                 message: error.message });

@@ -23,7 +23,7 @@ export class ShowsBusiness {
         const id = this.idGenerator.generate();
 
         if (userData.role !== USER_ROLES.ADMIN) {
-            throw new Error('Apenas usuários administradores podem cadastrar bandas')
+            throw new Error('Apenas usuários administradores podem cadastrar shows')
         }
 
         await this.showsDatabase.createShow(
