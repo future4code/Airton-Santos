@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
+import { BaseDatabase } from "../data/BaseDatabase";
 import { UserDatabase } from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
@@ -23,12 +24,14 @@ export class UserController {
         req.body.role
       );
       res.status(200).send({
-            message: 'Usuário cadastrado com sucesso!',
-            token
+          message: 'Usuário cadastrado com sucesso!',
+          token
         });
     } catch (err) {
       res.status(err.errorCode || 400).send({ message: err.message });
-    }
+    } finally {
+      BaseDatabase.destroyConnection()
+  }
   }
 
   public async login(req: Request, res: Response) {
@@ -41,6 +44,8 @@ export class UserController {
         token});
     } catch (err) {
       res.status(err.errorCode || 400).send({ message: err.message });
-    }
+    } finally {
+      BaseDatabase.destroyConnection()
+  }
   }
 }

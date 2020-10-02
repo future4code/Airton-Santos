@@ -1,8 +1,8 @@
 import { UserDatabase } from "../data/UserDatabase";
+import { USER_ROLES } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
-import {USER_ROLES} from "../services/Authenticator";
 
 export class UserBusiness {
 
@@ -53,7 +53,7 @@ export class UserBusiness {
             role
         });
 
-        return { token };
+        return token;
     }
 
     public async login(email: string, password: string): Promise<string> {
@@ -62,8 +62,7 @@ export class UserBusiness {
             throw new Error('Insira todas as informações necessárias para o login')
         }
 
-        const userDatabase = new UserDatabase();
-        const user = await userDatabase.getUserByEmail(email);
+        const user = await this.userDatabase.getUserByEmail(email);
 
         const passwordIsCorrect: boolean = await new HashManager().compare(
             password,
@@ -74,8 +73,7 @@ export class UserBusiness {
             throw new Error('Usuário ou senha inválidos')
         }
 
-        const authenticator = new Authenticator();
-        const token = authenticator.generateToken({id: user.id, role: USER_ROLES.ADMIN });
+        const token = this.authenticator.generateToken({id: user.id, role: user.role });
 
         return token;
     }
