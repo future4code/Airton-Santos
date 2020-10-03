@@ -45,11 +45,11 @@ export class ShowsBusiness {
         }
 
         if (start_time === end_time) {
-            throw new Error('Os horários de começo e término de um show, não podem ser os mesmos, e os horários de começo e término devem ser entre 8:00 e 23:00')
+            throw new Error('Os horários de começo e término de um show, não podem ser os mesmos, e os horários de começo e término devem ser entre 8:00 e 23:00 e não podem ser fracionados')
         }
 
         if (start_time > end_time) {
-            throw new Error('O horário de começo de um show não pode ser anterior ao horário de término, e os horários de começo e término devem ser entre 8:00 e 23:00')
+            throw new Error('O horário de começo de um show não pode ser anterior ao horário de término, e os horários de começo e término devem ser entre 8:00 e 23:00 e não podem ser fracionados')
         }
 
         await this.showsDatabase.createShow(
