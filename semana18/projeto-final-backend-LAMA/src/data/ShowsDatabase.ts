@@ -35,7 +35,11 @@ export class ShowsDatabase extends BaseDatabase {
 
     public async getShows(week_day: string): Promise<Show> {
         const result = await this.getConnection().raw(`
-          SELECT * from ${ShowsDatabase.TABLE_NAME} WHERE week_day LIKE '%${week_day}%'
+            SELECT name, music_genre, LamaShows.start_time
+            FROM Artists
+            JOIN LamaShows on LamaShows.artist_id = Artists.id
+            WHERE LamaShows.week_day LIKE '%${week_day}%'
+            ORDER BY LamaShows.start_time ASC;
         `);
         return (result[0]);
     }

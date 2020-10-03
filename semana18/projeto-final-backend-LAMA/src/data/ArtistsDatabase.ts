@@ -23,6 +23,9 @@ export class ArtistsDatabase extends BaseDatabase {
                     responsible
                 }).into(ArtistsDatabase.TABLE_NAME);
             } catch(error) {
+                if(error.message.match(`Duplicate entry`)){
+                    throw new Error(`Essa banda ou artista já está cadastrado `)
+                }
                 throw new Error (error.sqlMessage || error.message)
             }
     };
