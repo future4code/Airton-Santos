@@ -1,5 +1,6 @@
 import { ShowsDatabase } from "../data/ShowsDatabase";
 import { USER_ROLES } from "../model/User";
+import { SHOW_TIME, WEEK_DAY } from "../model/WeekDay";
 import { Authenticator} from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 
@@ -13,9 +14,9 @@ export class ShowsBusiness {
 
     public async createShow(
         token: string,
-        week_day: string,
-        start_time: number,
-        end_time: number,
+        week_day: WEEK_DAY,
+        start_time: SHOW_TIME,
+        end_time: SHOW_TIME,
         artist_id: string
         ) {
 
@@ -24,6 +25,31 @@ export class ShowsBusiness {
 
         if (userData.role !== USER_ROLES.ADMIN) {
             throw new Error('Apenas usuários administradores podem cadastrar shows')
+        }
+
+        if (
+            week_day.includes('SEXTA') && start_time.includes('SÁBADO') ||
+            week_day.includes('SEXTA') && start_time.includes('DOMINGO') ||
+            week_day.includes('SÁBADO') && start_time.includes('DOMINGO') ||
+            week_day.includes('SÁBADO') && start_time.includes('SEXTA') ||
+            week_day.includes('DOMINGO') && start_time.includes('SEXTA') ||
+            week_day.includes('DOMINGO') && start_time.includes('SÁBADO') ||
+            week_day.includes('SEXTA') && end_time.includes('SÁBADO') ||
+            week_day.includes('SEXTA') && end_time.includes('DOMINGO') ||
+            week_day.includes('SÁBADO') && end_time.includes('DOMINGO') ||
+            week_day.includes('SÁBADO') && end_time.includes('SEXTA') ||
+            week_day.includes('DOMINGO') && end_time.includes('SEXTA') ||
+            week_day.includes('DOMINGO') && end_time.includes('SÁBADO')
+            ) {
+            throw new Error('Para cadastrar um horário, o formato informado deve ser: DIA - HH:MM (Ex.: SEXTA - 13:00). O DIA deve ser o mesmo informado em week_day, e os horários de começo e término devem ser entre 8:00 e 23:00')
+        }
+
+        if (start_time === end_time) {
+            throw new Error('Os horários de começo e término de um show, não podem ser os mesmos, e os horários de começo e término devem ser entre 8:00 e 23:00')
+        }
+
+        if (start_time > end_time) {
+            throw new Error('O horário de começo de um show não pode ser anterior ao horário de término, e os horários de começo e término devem ser entre 8:00 e 23:00')
         }
 
         await this.showsDatabase.createShow(
