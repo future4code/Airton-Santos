@@ -1,0 +1,19 @@
+{
+  "name": "sum-two-numbers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "clear && echo \"Running tests...\" && jest",
+    "start": "tsc && node ./build/index.js",
+    "build": "tsc",
+    "start:dev": " ts-node-dev ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
